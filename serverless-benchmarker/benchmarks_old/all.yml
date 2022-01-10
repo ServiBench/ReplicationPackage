@@ -1,9 +1,0 @@
-- name: Thumbnail Generator
-    - path: /Users/anonymous/Projects/Serverless/test-apps-yes/faas-migration/ThumbnailGenerator/Azure
-
-# Git-based extension:
-    # - repo: https://github.com/iaas-splab/faas-migration/tree/master/ThumbnailGenerator
-    # - git: https://github.com/iaas-splab/faas-migration.git
-    #     - ref: "eef7e65806e7ff3bdbe148e27c447ef4a8bc3881"
-    #     - tag: "1.2.3"
-    #     - branch: "master"
