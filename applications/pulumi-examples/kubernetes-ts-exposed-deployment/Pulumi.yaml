@@ -1,0 +1,8 @@
+name: exposed-deployment
+description: A simple Deployment running nginx, exposed to the Internet with a Service
+runtime: nodejs
+template:
+  config:
+    isMinikube:
+      description: Whether you are deploying to minikube
+      default: true

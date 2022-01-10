@@ -1,0 +1,14 @@
+{
+    "IsEncrypted":"false",
+    "Values":{
+        "AzureWebJobsStorage":"DefaultEndpointsProtocol=https;AccountName=krnlevtprocstore;AccountKey=msnlbFm19ZIZ7ESyWZ5SbbTETuw8oXkvzJogDFGfKn8maNLCYCXnBq/pY+i80CErs3tHfg0/cLLobRRnAH3YBg==;EndpointSuffix=core.windows.net",
+        "DBUsername":"krnladmin@krnlevtprocdb",
+        "DBPassword":"eSh4iimaeh2lioxaseukiegheNoo4phi",
+        "DBEndpoint":"krnlevtprocdb.mysql.database.azure.com",
+        "DBName":"krnlevtprocdb",
+        "ServiceBusConnection":"Endpoint=sb://krnlevthub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=O6fce2Ec5chDGVgAHDZwWJNYqgwvahQFgJ9+RRTb/Tg=",
+    },
+    "ConnectionStrings": {
+        "ServiceBusConnection":"Endpoint=sb://krnlevthub.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=O6fce2Ec5chDGVgAHDZwWJNYqgwvahQFgJ9+RRTb/Tg=",
+    }
+}

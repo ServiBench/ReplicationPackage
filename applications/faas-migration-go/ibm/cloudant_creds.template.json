@@ -1,0 +1,6 @@
+{
+  "cloudant_host": "",
+  "cloudant_username": "",
+  "cloudant_password": "",
+  "cloudant_db_name": "items"
+}

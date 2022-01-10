@@ -1,0 +1,105 @@
+{
+    "activationId": "61e28e0a67494bfea28e0a6749fbfe79",
+    "annotations": [
+        {
+            "key": "binding",
+            "value": "86602a26-7db9-48bc-a8b9-f1f41b1a6360/myMessageHub"
+        },
+        {
+            "key": "path",
+            "value": "whisk.system/messaging/messageHubFeed"
+        },
+        {
+            "key": "waitTime",
+            "value": 195
+        },
+        {
+            "key": "kind",
+            "value": "nodejs:10"
+        },
+        {
+            "key": "timeout",
+            "value": false
+        },
+        {
+            "key": "limits",
+            "value": {
+                "concurrency": 1,
+                "logs": 10,
+                "memory": 256,
+                "timeout": 60000
+            }
+        },
+        {
+            "key": "initTime",
+            "value": 242
+        }
+    ],
+    "duration": 1082,
+    "end": 1566144682070,
+    "logs": [],
+    "name": "messageHubFeed",
+    "namespace": "86602a26-7db9-48bc-a8b9-f1f41b1a6360",
+    "publish": false,
+    "response": {
+        "result": {
+            "error": "Could not authenticate with Message Hub. Please check your credentials."
+        },
+        "status": "application error",
+        "success": false
+    },
+    "start": 1566144680988,
+    "subject": "<Account E-Mail>",
+    "version": "0.0.18"
+}
+{
+    "activationId": "91b66b3cea294967b66b3cea290967a1",
+    "annotations": [
+        {
+            "key": "binding",
+            "value": "86602a26-7db9-48bc-a8b9-f1f41b1a6360/myMessageHub"
+        },
+        {
+            "key": "path",
+            "value": "whisk.system/messaging/messageHubFeed"
+        },
+        {
+            "key": "waitTime",
+            "value": 95
+        },
+        {
+            "key": "kind",
+            "value": "nodejs:10"
+        },
+        {
+            "key": "timeout",
+            "value": false
+        },
+        {
+            "key": "limits",
+            "value": {
+                "concurrency": 1,
+                "logs": 10,
+                "memory": 256,
+                "timeout": 60000
+            }
+        }
+    ],
+    "duration": 1015,
+    "end": 1566144683263,
+    "logs": [],
+    "name": "messageHubFeed",
+    "namespace": "86602a26-7db9-48bc-a8b9-f1f41b1a6360",
+    "publish": false,
+    "response": {
+        "result": {
+            "error": "Error: missing"
+        },
+        "status": "application error",
+        "success": false
+    },
+    "start": 1566144682248,
+    "subject": "<Account E-Mail>",
+    "version": "0.0.18"
+}
+ok: deleted trigger temp-trigger

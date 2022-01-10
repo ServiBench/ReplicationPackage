@@ -1,0 +1,18 @@
+{
+  "name": "azure-evtproc",
+  "version": "1.0.0",
+  "description": "Azure implementation of the Event Processing use-case",
+  "scripts": {
+    "test": "echo \"No tests yet...\"",
+    "start": "func host start"
+  },
+  "keywords": [
+    "azure",
+    "serverless"
+  ],
+  "dependencies": {
+    "mysql": "^2.17.1",
+    "serverless-mysql": "^1.4.0"
+  },
+  "devDependencies": {}
+}

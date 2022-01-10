@@ -1,0 +1,20 @@
+# sb
+__pycache__/
+.sb/
+logs
+workload_options.json
+
+# ThumbnailGenerator
+ThumbnailGenerator/test-images/test-base64-*
+
+*.log
+**/target/
+**/out/
+*.jar
+*.class
+**/.idea/
+*.iml
+**/bin/
+**/obj/
+*.dll
+**/.serverless/

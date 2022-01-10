@@ -1,0 +1,24 @@
+{
+    "messages": [
+        {
+            "source":"source1",
+            "timestamp":123456778,
+            "message":"tstmessage1"
+        },
+        {
+            "source":"source2",
+            "timestamp":123456771,
+            "message":"tstmessage2"
+        },
+        {
+            "source":"source1",
+            "timestamp":123456788,
+            "message":"tstmessage3"
+        },
+        {
+            "source":"source1",
+            "timestamp":123456578,
+            "message":"tstmessage4"
+        }
+    ]
+}

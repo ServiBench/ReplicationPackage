@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "self": {
+    "vendor": "com.nordstrom",
+    "name": "retail-stream-ingress",
+    "format": "jsonschema",
+    "version": "1-1-0"
+  },
+  "type": "object",
+  "properties": {
+    "schema":      { "type": "string" },
+    "followsFrom": { "type": "string" },
+    "origin":      { "type": "string" },
+    "traceId":     { "type": "string" },
+    "timeOrigin":  { "type": "string", "format": "date-time" },
+    "data": {
+      "type": "object",
+      "properties": {
+        "schema": { "type": "string" }
+      },
+      "required": [
+        "schema"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "required": [
+    "schema",
+    "origin",
+    "timeOrigin",
+    "traceId",
+    "data"
+  ],
+  "additionalProperties": false
+}

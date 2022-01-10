@@ -1,0 +1,44 @@
+{
+  "StartAt": "OrcheStrator",
+  "States": {
+    "OrcheStrator": {
+      "Type": "Task",
+      "Resource": "[ORCHESTRATOR-FUNCTION-ARN]",
+      "ResultPath": "$.num_of_file",
+      "Next": "Wait X Seconds"
+    },
+    "Wait X Seconds": {
+      "Type": "Wait",
+      "Seconds": 12,
+      "Next": "Get Job Status"
+    },
+    "Get Job Status": {
+      "Type": "Task",
+      "Resource": "[GET-JOB-STATUS-FUNTION-ARN]",
+      "Next": "Job Complete?",
+      "InputPath": "$.num_of_file",
+      "ResultPath": "$"
+    },
+    "Job Complete?": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.status",
+          "StringEquals": "FAILED",
+          "Next": "Wait X Seconds"
+        },
+        {
+           "Variable": "$.status",
+           "StringEquals": "SUCCEEDED",
+           "Next": "Feature Reducer"
+        }
+      ],
+      "Default": "Wait X Seconds"
+    },
+    "Feature Reducer": {
+      "Type": "Task",
+      "Resource": "[FEATURE-REDUCER-FUNCTION-ARN]",
+      "End": true
+    }
+  }
+}

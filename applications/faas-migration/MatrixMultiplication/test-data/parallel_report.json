@@ -1,0 +1,20 @@
+{
+  "Size": 50,
+  "InputMatrixA": {
+    "Average": 49,
+    "Minimum": 0,
+    "Maximum": 99
+  },
+  "InputMatrixB": {
+    "Average": 49,
+    "Minimum": 0,
+    "Maximum": 99
+  },
+  "ResultMatrix": {
+    "Average": 121672,
+    "Minimum": 78312,
+    "Maximum": 168397
+  },
+  "StartTimestamp": 1566385206305,
+  "EndTimestamp": 1566385206314
+}

@@ -1,0 +1,125 @@
+StartAt: CreateMatrix
+States:
+  CreateMatrix:
+    Type: Task
+    Resource: %MATRIX_GEN_ARN%
+    TimeoutSeconds: 60
+    Next: ChooseVariant
+  ChooseVariant:
+    Type: Choice
+    Choices:
+      - Variable: $.MatrixSize
+        NumericGreaterThanEquals: 10
+        Next: AppendWorkerCount
+      - Variable: $.MatrixSize
+        NumericLessThan: 10
+        Next: SerialMul
+    InputPath: $
+    OutputPath: $
+  DistributeWork:
+    Type: Task
+    Resource: %DISTRIBUTOR_ARN%
+    TimeoutSeconds: 60
+    Next: ParallelMul
+  SerialMul:
+    Type: Task
+    Resource: %SERIAL_MUL_ARN%
+    Comment: Serial Multiplication Handler
+    InputPath: $
+    OutputPath: $
+    TimeoutSeconds: 300
+    Next: GenReport
+  BuildResult:
+    Type: Task
+    Resource: %BUILD_RESULT_ARN%
+    TimeoutSeconds: 60
+    Next: GenReport
+  GenReport:
+    Type: Task
+    Resource: %GEN_REPORT_ARN%
+    TimeoutSeconds: 60
+    End: true
+  ParallelMul:
+    Type: Parallel
+    Branches:
+      - StartAt: AssignWorkerID1
+        States:
+          AssignWorkerID1:
+            Type: Pass
+            InputPath: $
+            OutputPath: $
+            ResultPath: $.WorkerID
+            Result: '0'
+            Next: MulWorker1
+          MulWorker1:
+            Type: Task
+            Resource: %MUL_WORKER_ARN%
+            TimeoutSeconds: 60
+            End: true
+      - StartAt: AssignWorkerID2
+        States:
+          AssignWorkerID2:
+            Type: Pass
+            InputPath: $
+            OutputPath: $
+            ResultPath: $.WorkerID
+            Result: '1'
+            Next: MulWorker2
+          MulWorker2:
+            Type: Task
+            Resource: %MUL_WORKER_ARN%
+            TimeoutSeconds: 60
+            End: true
+      - StartAt: AssignWorkerID3
+        States:
+          AssignWorkerID3:
+            Type: Pass
+            InputPath: $
+            OutputPath: $
+            ResultPath: $.WorkerID
+            Result: '2'
+            Next: MulWorker3
+          MulWorker3:
+            Type: Task
+            Resource: %MUL_WORKER_ARN%
+            TimeoutSeconds: 60
+            End: true
+      - StartAt: AssignWorkerID5
+        States:
+          AssignWorkerID5:
+            Type: Pass
+            InputPath: $
+            OutputPath: $
+            ResultPath: $.WorkerID
+            Result: '4'
+            Next: MulWorker5
+          MulWorker5:
+            Type: Task
+            Resource: %MUL_WORKER_ARN%
+            TimeoutSeconds: 60
+            End: true
+      - StartAt: AssignWorkerID4
+        States:
+          AssignWorkerID4:
+            Type: Pass
+            InputPath: $
+            OutputPath: $
+            ResultPath: $.WorkerID
+            Result: '3'
+            Next: MulWorker4
+          MulWorker4:
+            Type: Task
+            Resource: %MUL_WORKER_ARN%
+            TimeoutSeconds: 60
+            End: true
+    InputPath: $
+    OutputPath: $
+    ResultPath: $.Result
+    Next: BuildResult
+  AppendWorkerCount:
+    Type: Pass
+    InputPath: $
+    OutputPath: $
+    ResultPath: $.WorkerCount
+    Result: '5'
+    Next: DistributeWork

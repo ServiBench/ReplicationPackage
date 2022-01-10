@@ -1,0 +1,194 @@
+service: matrix-mul
+
+custom:
+  data_bucket_name: ${env:DATA_BUCKET_NAME, 'matrix-multiplication-data-sb'}
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: dotnetcore3.1
+  stage: ${env:STAGE, 'dev'}
+  timeout: 600
+  region: ${env:REGION, 'us-east-1'}
+  memorySize: ${env:MEMORY_SIZE, 1024}
+  tracing:
+      apiGateway: true
+      lambda: true
+  environment:
+    DATA_BUCKET_NAME: ${self:custom.data_bucket_name}
+    DATA_BUCKET_REGION: ${self:provider.region}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+
+package:
+  individually: false
+  artifact: bin/release/netcoreapp3.1/matrix-mul.zip
+
+functions:
+  create_matrix:
+    handler: BTLambda::MatrixMul.Lambda.Handler::CreateMatrix
+  serial_mul:
+    handler: BTLambda::MatrixMul.Lambda.Handler::SerialMultiply
+  parallel_mul_scheduler:
+    handler: BTLambda::MatrixMul.Lambda.Handler::ScheduleMultiplyTasks
+  mul_worker:
+    handler: BTLambda::MatrixMul.Lambda.Handler::MultiplyTasksWorker
+  result_builder:
+    handler: BTLambda::MatrixMul.Lambda.Handler::BuildResultMatrix
+  build_report:
+    handler: BTLambda::MatrixMul.Lambda.Handler::BuildReport
+
+stepFunctions:
+  stateMachines:
+    matrix_mul_step_func:
+      name: MatrixMul
+      type: EXPRESS
+      tracingConfig:
+        enabled: true
+      events:
+        - http:
+            path: run
+            method: POST
+      definition:
+        StartAt: CreateMatrix
+        States:
+          CreateMatrix:
+            Type: Task
+            Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-create_matrix"
+            TimeoutSeconds: 60
+            Next: ChooseVariant
+          ChooseVariant:
+            Type: Choice
+            Choices:
+              - Variable: $.MatrixSize
+                NumericGreaterThanEquals: 10
+                Next: AppendWorkerCount
+              - Variable: $.MatrixSize
+                NumericLessThan: 10
+                Next: SerialMul
+            InputPath: $
+            OutputPath: $
+          DistributeWork:
+            Type: Task
+            Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-parallel_mul_scheduler"
+            TimeoutSeconds: 60
+            Next: ParallelMul
+          SerialMul:
+            Type: Task
+            Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-serial_mul"
+            Comment: Serial Multiplication Handler
+            InputPath: $
+            OutputPath: $
+            TimeoutSeconds: 300
+            Next: GenReport
+          BuildResult:
+            Type: Task
+            Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-result_builder"
+            TimeoutSeconds: 60
+            Next: GenReport
+          GenReport:
+            Type: Task
+            Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-build_report"
+            TimeoutSeconds: 60
+            End: true
+          ParallelMul:
+            Type: Parallel
+            Branches:
+              - StartAt: AssignWorkerID1
+                States:
+                  AssignWorkerID1:
+                    Type: Pass
+                    InputPath: $
+                    OutputPath: $
+                    ResultPath: $.WorkerID
+                    Result: '0'
+                    Next: MulWorker1
+                  MulWorker1:
+                    Type: Task
+                    Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-mul_worker"
+                    TimeoutSeconds: 600
+                    End: true
+              - StartAt: AssignWorkerID2
+                States:
+                  AssignWorkerID2:
+                    Type: Pass
+                    InputPath: $
+                    OutputPath: $
+                    ResultPath: $.WorkerID
+                    Result: '1'
+                    Next: MulWorker2
+                  MulWorker2:
+                    Type: Task
+                    Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-mul_worker"
+                    TimeoutSeconds: 600
+                    End: true
+              - StartAt: AssignWorkerID3
+                States:
+                  AssignWorkerID3:
+                    Type: Pass
+                    InputPath: $
+                    OutputPath: $
+                    ResultPath: $.WorkerID
+                    Result: '2'
+                    Next: MulWorker3
+                  MulWorker3:
+                    Type: Task
+                    Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-mul_worker"
+                    TimeoutSeconds: 600
+                    End: true
+              - StartAt: AssignWorkerID5
+                States:
+                  AssignWorkerID5:
+                    Type: Pass
+                    InputPath: $
+                    OutputPath: $
+                    ResultPath: $.WorkerID
+                    Result: '4'
+                    Next: MulWorker5
+                  MulWorker5:
+                    Type: Task
+                    Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-mul_worker"
+                    TimeoutSeconds: 600
+                    End: true
+              - StartAt: AssignWorkerID4
+                States:
+                  AssignWorkerID4:
+                    Type: Pass
+                    InputPath: $
+                    OutputPath: $
+                    ResultPath: $.WorkerID
+                    Result: '3'
+                    Next: MulWorker4
+                  MulWorker4:
+                    Type: Task
+                    Resource: "arn:aws:lambda:${aws:region}:${aws:accountId}:function:${self:service}-${self:provider.stage}-mul_worker"
+                    TimeoutSeconds: 600
+                    End: true
+            InputPath: $
+            OutputPath: $
+            ResultPath: $.Result
+            Next: BuildResult
+          AppendWorkerCount:
+            Type: Pass
+            InputPath: $
+            OutputPath: $
+            ResultPath: $.WorkerCount
+            Result: '5'
+            Next: DistributeWork
+
+resources:
+  Resources:
+    ThumbnailBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.data_bucket_name}
+  Outputs:
+    MatrixMul:
+      Description: The ARN of the MatrixMul state machine
+      Value:
+        Ref: MatrixMul
+plugins:
+  - serverless-step-functions

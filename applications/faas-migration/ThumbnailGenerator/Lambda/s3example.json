@@ -1,0 +1,38 @@
+{
+  "Records": [
+    {
+      "eventVersion": "2.1",
+      "eventSource": "aws:s3",
+      "awsRegion": "us-east-1",
+      "eventTime": "2019-02-11T20:09:49.080Z",
+      "eventName": "ObjectCreated:Put",
+      "userIdentity": {
+        "principalId": "A1P82TG7QDFIO2"
+      },
+      "requestParameters": {
+        "sourceIPAddress": "91.6.177.202"
+      },
+      "responseElements": {
+        "x-amz-request-id": "6132F52CB439251C",
+        "x-amz-id-2": "DBweqX5cun/rNFiyOw8u+lwSWzgY3pZAnH2o3UeMwVi/sZNyMejMEC4DEuJoQ6qzStwEYqN6cY8="
+      },
+      "s3": {
+        "s3SchemaVersion": "1.0",
+        "configurationId": "2c3d3f4d-0243-46e0-b7f3-e4320f027256",
+        "bucket": {
+          "name": "cmueller-tgen-images",
+          "ownerIdentity": {
+            "principalId": "A1P82TG7QDFIO2"
+          },
+          "arn": "arn:aws:s3:::cmueller-tgen-images"
+        },
+        "object": {
+          "key": "rndaj",
+          "size": 102400,
+          "eTag": "23d761cbed8ad025b5c36f085a1ddf21",
+          "sequencer": "005C61D68D0F53063D"
+        }
+      }
+    }
+  ]
+}

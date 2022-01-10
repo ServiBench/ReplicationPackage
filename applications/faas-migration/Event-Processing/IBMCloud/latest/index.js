@@ -1,0 +1,78 @@
+'use strict';
+
+const createDBQuery = "CREATE TABLE IF NOT EXISTS events (ID int unsigned NOT NULL auto_increment PRIMARY KEY, source VARCHAR(255) NOT NULL, timestamp int unsigned NOT NULL, message VARCHAR(1000) NOT NULL);"
+
+const parseDatabaseCredentials = function(args) {
+  let dburl = args.uri.toString().replace("mysql://","");
+  let spliturl = dburl.split("@");
+  let creds = spliturl[0].split(":");
+  let username = creds[0];
+  let password = creds[1];
+  let hostDb = spliturl[1].split("/");
+  let hostnamePort = hostDb[0].split(":");
+  let hostname = hostnamePort[0];
+  let port = hostnamePort[1];
+  let db = hostDb[1];
+
+  return {
+    user: username,
+    pass: password,
+    db: db,
+    host: hostname,
+    port: parseInt(port, 10)
+  };
+}
+
+exports.main =  async function(args) {
+  let params = args;
+  console.log(JSON.stringify(args));
+
+  let creds = parseDatabaseCredentials(args);
+  console.log(JSON.stringify(creds));
+
+  console.log("Connecting to MySQL");
+  const mysql = require('serverless-mysql')({
+    config: {
+      database: creds.db,
+      user: creds.user,
+      password: creds.pass,
+      host: creds.host,
+      port: creds.port,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
+  });
+  console.log("Creating DB");
+  try{
+    await mysql.query(createDBQuery);
+  } catch(e) {
+    console.log(e);
+    return {
+      statuscode: 500,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: {
+        success: false,
+        error: e.toString()
+      }
+  };
+  }
+
+  console.log("Querying");
+  let result = await mysql.query({
+    sql: 'SELECT * FROM events ORDER BY ID DESC LIMIT 1;',
+    timeout: 10000
+  });
+  console.log(result);
+  await mysql.end();
+
+  return {
+      statuscode: 200,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: result
+  };
+}

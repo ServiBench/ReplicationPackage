@@ -1,0 +1,10 @@
+{
+  "name": "bt-evtproc",
+  "description": "",
+  "version": "0.1.0",
+  "dependencies": {
+    "aws-xray-sdk-core": "^3.2.0",
+    "aws-xray-sdk-mysql": "^3.2.0",
+    "serverless-mysql": "^1.4.0"
+  }
+}

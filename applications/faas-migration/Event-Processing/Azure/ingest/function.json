@@ -1,0 +1,42 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "name": "temperatureTopic",
+      "type": "serviceBus",
+      "subscriptionName": "temperaturepush",
+      "topicName": "temperature",
+      "connection": "ServiceBusConnection",
+      "direction": "out"
+    },
+    {
+      "name": "forecastTopic",
+      "type": "serviceBus",
+      "subscriptionName": "forecastpush",
+      "topicName": "forecast",
+      "connection": "ServiceBusConnection",
+      "direction": "out"
+    },
+    {
+      "name": "stateChangeTopic",
+      "type": "serviceBus",
+      "subscriptionName": "statechangepush",
+      "topicName": "statechange",
+      "connection": "ServiceBusConnection",
+      "direction": "out"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

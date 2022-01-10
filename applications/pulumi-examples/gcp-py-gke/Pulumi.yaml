@@ -1,0 +1,6 @@
+name: gcp-py-gke
+description: A Google Kubernetes Engine (GKE) cluster, with canary deployment
+runtime:
+  name: python
+  options:
+    virtualenv: venv

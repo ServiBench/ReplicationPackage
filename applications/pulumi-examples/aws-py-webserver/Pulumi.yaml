@@ -1,0 +1,11 @@
+name: webserver-py
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Basic example of an AWS web server accessible over HTTP (in Python!)
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-west-2

@@ -1,0 +1,69 @@
+service: video-processing
+
+frameworkVersion: ^2.50.0
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: python3.8
+  stage: ${env:STAGE, 'dev'}
+  region: ${env:REGION, 'us-east-1'}
+  memorySize: ${env:MEMORY_SIZE, 1024}
+  tracing:
+    apiGateway: true
+    lambda: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+
+plugins:
+  - serverless-python-requirements
+  
+functions:
+  video-processing:
+    handler: lambda_function.lambda_handler
+    # Will be automatically reduced to 30s in synchronous mode!
+    timeout: 120
+    events:
+      - http:
+          path: process
+          method: post
+          # Optional asynchronous processing to support longer video files because
+          # video processing typically takes longer than the maximum
+          # 30s timeout of the API gateway.
+          # async: true
+
+
+custom:
+  pythonRequirements:
+    # dockerizePip: false
+
+    dockerExtraFiles:
+      - /var/task/cv2/cv2.cpython-38-x86_64-linux-gnu.so
+
+    slim: true
+    strip: false
+    slimPatterns:
+      # included by default with slim: true
+      # - '**/*.py[c|o]'
+      # - '**/__pycache__*'
+      # - '**/*.dist-info*'
+      # remove unnecessary files of dependencies to reduce size
+      - '**/tests/*'
+      - '**/test/*'
+      - '**/LICENSE.txt'
+    invalidateCaches: true
+    useStaticCache: false
+    # zip: true
+
+package:
+  individually: false
+  include:
+    - '!./**'
+    - './lambda_function.py'
+    - 'cv2.cpython-38-x86_64-linux-gnu.so'
+
+  exclude:
+    - '**'

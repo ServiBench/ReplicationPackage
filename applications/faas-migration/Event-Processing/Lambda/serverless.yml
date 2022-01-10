@@ -1,0 +1,284 @@
+frameworkVersion: ^2.64.1
+
+service: event-processing
+
+custom:
+  # Modify Queue names here
+  temperature_format_topic: format-temperature
+  forecast_format_topic: format-forecast
+  state_change_format_topic: format-state-change
+  error_topic: error
+  sqs_queue_name: EventIngestQueue
+  database:
+    # DO NOT CHANGE THIS
+    db_name: aurora${self:provider.stage, self:provider.stage}
+    # Set the username of the administrator
+    username: master
+    # Set the password of the administrator
+    password: aCo2xeuph5wahr7s
+    # DO NOT CHANGE THE FOLLOWING PARAMETERS
+    host:
+      Fn::GetAtt: [AuroraRDSCluster, Endpoint.Address]
+    port:
+      Fn::GetAtt: [AuroraRDSCluster, Endpoint.Port]
+    vpc_cidr: 10
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: nodejs12.x
+  memorySize: ${env:MEMORY_SIZE, 1024}
+  stage: ${env:STAGE, 'dev'}
+  region: ${env:REGION, 'us-east-1'}
+  tracing:
+    apiGateway: true
+    lambda: true
+  environment:
+    CLOUD_REGION: '${aws:region}'
+    CLOUD_ACCOUNT_ID: '${aws:accountId}'
+  iamRoleStatements:
+    - Effect: "Allow"
+      Resource: "*"
+      Action:
+        - "sns:*"
+        - "sqs:*"
+
+# Optimize deployment package size
+package:
+  # exclude everything except node dependencies
+  # the Serverless Framework automatically removes dev dependencies
+  exclude:
+     - ./**
+     - '!node_modules/**'
+  # only include function handler code
+  include:
+    - eventinserter.js
+    - formatprocessing.js
+    - ingest.js
+    - list.js
+    - package.json
+
+functions:
+  ingest:
+    handler: ingest.handleIngest
+    environment:
+      TEMPERATURE_TOPIC: ${self:custom.temperature_format_topic}
+      TEMPERATURE_TOPIC_ARN: arn:aws:sns:${aws:region}:${aws:accountId}:${self:custom.temperature_format_topic}
+      FORECAST_TOPIC: ${self:custom.forecast_format_topic}
+      FORECAST_TOPIC_ARN: arn:aws:sns:${aws:region}:${aws:accountId}:${self:custom.forecast_format_topic}
+      STATE_CHANGE_TOPIC: ${self:custom.state_change_format_topic}
+      STATE_CHANGE_TOPIC_ARN: arn:aws:sns:${aws:region}:${aws:accountId}:${self:custom.state_change_format_topic}
+    events:
+      - http:
+          path: ingest
+          method: POST
+  format_temperature:
+    handler: formatprocessing.formatTemperatureEvent
+    events:
+      - sns:
+          arn: !Ref TemperatureTopic
+          topicName: ${self:custom.temperature_format_topic}
+    onError: arn:aws:sns:${aws:region}:${aws:accountId}:${self:custom.error_topic}
+    environment:
+      QUEUE_NAME: ${self:custom.sqs_queue_name}
+      QUEUE_ARN: arn:aws:sqs:${aws:region}:${aws:accountId}:${self:custom.sqs_queue_name}
+  format_forecast:
+    handler: formatprocessing.formatForecastEvent
+    events:
+      - sns:
+          arn: !Ref ForecastTopic
+          topicName: ${self:custom.forecast_format_topic}
+    onError: arn:aws:sns:${aws:region}:${aws:accountId}:${self:custom.error_topic}
+    environment:
+      QUEUE_NAME: ${self:custom.sqs_queue_name}
+      QUEUE_ARN: arn:aws:sqs:${aws:region}:${aws:accountId}:${self:custom.sqs_queue_name}
+  format_state_change:
+    handler: formatprocessing.formatStateChangeEvent
+    events:
+      - sns:
+          arn: !Ref StateChangeTopic
+          topicName: ${self:custom.state_change_format_topic}
+    onError: arn:aws:sns:${aws:region}:${aws:accountId}:${self:custom.error_topic}
+    environment:
+      QUEUE_NAME: ${self:custom.sqs_queue_name}
+      QUEUE_ARN: arn:aws:sqs:${aws:region}:${aws:accountId}:${self:custom.sqs_queue_name}
+  format_func_on_error:
+    handler: formatprocessing.handleErr
+    events:
+      - sns:
+          arn: !Ref ErrorTopic
+          topicName: ${self:custom.error_topic}
+  event_inserter:
+    handler: eventinserter.insertEvent
+    events:
+      - sqs:
+          arn: arn:aws:sqs:${aws:region}:${aws:accountId}:${self:custom.sqs_queue_name}
+    environment:
+      RDS_HOST: ${self:custom.database.host}
+      RDS_PORT: ${self:custom.database.port}
+      RDS_DB_NAME: ${self:custom.database.db_name}
+      RDS_USERNAME: ${self:custom.database.username}
+      RDS_PASSWORD: ${self:custom.database.password}
+    vpc:
+      securityGroupIds:
+        - Fn::GetAtt: [ServerlessVPC, DefaultSecurityGroup]
+      subnetIds:
+        - Ref: ServerlessSubnetA
+        - Ref: ServerlessSubnetB
+        - Ref: ServerlessSubnetC
+  list:
+    handler: list.handleList
+    events:
+      - http:
+          path: list
+          method: GET
+    environment:
+      RDS_HOST: ${self:custom.database.host}
+      RDS_PORT: ${self:custom.database.port}
+      RDS_DB_NAME: ${self:custom.database.db_name}
+      RDS_USERNAME: ${self:custom.database.username}
+      RDS_PASSWORD: ${self:custom.database.password}
+    vpc:
+      securityGroupIds:
+        - Fn::GetAtt: [ServerlessVPC, DefaultSecurityGroup]
+      subnetIds:
+        - Ref: ServerlessSubnetA
+        - Ref: ServerlessSubnetB
+        - Ref: ServerlessSubnetC
+  latest:
+    handler: list.handleLatest
+    events:
+      - http:
+          path: latest
+          method: GET
+    environment:
+      RDS_HOST: ${self:custom.database.host}
+      RDS_PORT: ${self:custom.database.port}
+      RDS_DB_NAME: ${self:custom.database.db_name}
+      RDS_USERNAME: ${self:custom.database.username}
+      RDS_PASSWORD: ${self:custom.database.password}
+    vpc:
+      securityGroupIds:
+        - Fn::GetAtt: [ServerlessVPC, DefaultSecurityGroup]
+      subnetIds:
+        - Ref: ServerlessSubnetA
+        - Ref: ServerlessSubnetB
+        - Ref: ServerlessSubnetC
+
+resources:
+  Resources:
+    SQSQueue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: ${self:custom.sqs_queue_name}
+    # The following code is inspired by:
+    # https://medium.com/mos-engineering/serverless-rdbs-part-1-set-up-aws-rds-aurora-and-lambda-with-serverless-4c2a5146faf4
+    # Modifcations of parameter names have happened
+    ServerlessVPC:
+      Type: AWS::EC2::VPC
+      Properties:
+        CidrBlock: ${self:custom.database.vpc_cidr}.0.0.0/16
+        EnableDnsSupport: true
+        EnableDnsHostnames: true
+        InstanceTenancy: default
+    ServerlessSubnetA:
+      DependsOn: ServerlessVPC
+      Type: AWS::EC2::Subnet
+      Properties:
+        VpcId:
+          Ref: ServerlessVPC
+        AvailabilityZone: ${self:provider.region}a
+        CidrBlock: ${self:custom.database.vpc_cidr}.0.0.0/24
+    ServerlessSubnetB:
+      DependsOn: ServerlessVPC
+      Type: AWS::EC2::Subnet
+      Properties:
+        VpcId:
+          Ref: ServerlessVPC
+        AvailabilityZone: ${self:provider.region}b
+        CidrBlock: ${self:custom.database.vpc_cidr}.0.1.0/24
+    ServerlessSubnetC:
+      DependsOn: ServerlessVPC
+      Type: AWS::EC2::Subnet
+      Properties:
+        VpcId:
+          Ref: ServerlessVPC
+        AvailabilityZone: ${self:provider.region}c
+        CidrBlock: ${self:custom.database.vpc_cidr}.0.2.0/24
+    # RDS DB config
+    AuroraSubnetGroup:
+      Type: AWS::RDS::DBSubnetGroup
+      Properties:
+        DBSubnetGroupDescription: "Aurora Subnet Group"
+        SubnetIds:
+          - Ref: ServerlessSubnetA
+          - Ref: ServerlessSubnetB
+          - Ref: ServerlessSubnetC
+    AuroraRDSClusterParameter:
+      Type: AWS::RDS::DBClusterParameterGroup
+      Properties:
+        Description: Parameter group for the Serverless Aurora RDS DB.
+        Family: aurora-mysql5.7
+        Parameters:
+          character_set_database: "utf32"
+    AuroraRDSInstanceParameter:
+      Type: AWS::RDS::DBParameterGroup
+      Properties:
+        Description: Parameter group for the Serverless Aurora RDS DB.
+        Family: aurora-mysql5.7
+        Parameters:
+          sql_mode: IGNORE_SPACE
+          max_connections: 100
+          wait_timeout: 900
+          interactive_timeout: 900
+    AuroraRDSCluster:
+      Type: "AWS::RDS::DBCluster"
+      Properties:
+        MasterUsername: ${self:custom.database.username}
+        MasterUserPassword: ${self:custom.database.password}
+        DBSubnetGroupName:
+          Ref: AuroraSubnetGroup
+        Engine: aurora-mysql
+        EngineVersion: "5.7"
+        DatabaseName: ${self:custom.database.db_name}
+        BackupRetentionPeriod: 3
+        DBClusterParameterGroupName:
+          Ref: AuroraRDSClusterParameter
+        VpcSecurityGroupIds:
+          - Fn::GetAtt: [ServerlessVPC, DefaultSecurityGroup]
+    AuroraRDSInstance:
+      Type: "AWS::RDS::DBInstance"
+      Properties:
+        DBInstanceClass: db.t2.medium
+        DBSubnetGroupName:
+          Ref: AuroraSubnetGroup
+        Engine: aurora-mysql
+        EngineVersion: "5.7"
+        PubliclyAccessible: false
+        DBParameterGroupName:
+          Ref: AuroraRDSInstanceParameter
+        DBClusterIdentifier:
+          Ref: AuroraRDSCluster
+    TemperatureTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ${self:custom.temperature_format_topic}
+    ForecastTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ${self:custom.forecast_format_topic}
+    StateChangeTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ${self:custom.state_change_format_topic}
+    ErrorTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ${self:custom.error_topic}
+  # NOTE: use proper indentation of `Outputs:` under `resources:` as in this example:
+  # https://stackoverflow.com/questions/53198356/serverless-framework-outputs
+  Outputs:
+    VpcId:
+      Value: !Ref ServerlessVPC
+      Export:
+        Name: ${self:provider.stage}-ServerlessVpcId

@@ -1,0 +1,11 @@
+{
+    "name": "twilio-ts-component",
+    "devDependencies": {
+        "@types/node": "^8.0.0"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^2.0.0",
+        "@pulumi/aws-serverless": "latest",
+        "twilio": "latest"
+    }
+}

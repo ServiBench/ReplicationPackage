@@ -1,0 +1,82 @@
+service: model-training
+
+frameworkVersion: ^2.50.0
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: python3.8
+  region: ${env:REGION, 'us-east-1'}
+  stage: ${env:STAGE, 'dev'}
+  timeout: 25 # default 6s is insufficient
+  memorySize: ${env:MEMORY_SIZE, 1024}
+  tracing:
+    apiGateway: true
+    lambda: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+
+plugins:
+  - serverless-python-requirements
+
+functions:
+  model-training:
+    handler: lambda_function.lambda_handler
+    events:
+      - http:
+          path: train
+          method: post
+
+custom:
+  pythonRequirements:
+    # Using custom Dockerfile to package native build dependencies:
+    # https://www.npmjs.com/package/serverless-python-requirements#native-code-dependencies-during-build
+    # sb invokes the Serverless framework directly in the right build container.
+    # Configuration for using the Serverless framework standalone without sb:
+    # dockerizePip: true
+    # dockerFile: Dockerfile
+
+    # Add native runtime dependencies: https://www.npmjs.com/package/serverless-python-requirements#native-code-dependencies-during-runtime
+    # Typically indicated by error such as 'ELF load command address/offset not properly aligned'
+    dockerExtraFiles:
+      - /var/task/scipy/linalg/_fblas.cpython-38-x86_64-linux-gnu.so
+    slim: true
+    strip: true
+    slimPatterns:
+      # included by default with slim: true
+      # - '**/*.py[c|o]'
+      # - '**/__pycache__*'
+      # - '**/*.dist-info*'
+      # remove unnecessary files of dependencies to reduce size
+      - '**/tests/*'
+      - '**/test/*'
+      - '**/LICENSE.txt'
+      # MAYBE: At least some *.so seem to be required but could probably optimize size more aggressively
+    # NOTE: Somehow, slimPatterns only work after clearing the cache
+    # by enabling the following config:
+    # See issue: https://github.com/UnitedIncome/serverless-python-requirements/issues/437
+    invalidateCaches: true
+    useStaticCache: false
+    # or manually cleaning the cache using:
+    # serverless requirements cleanCache
+    # Option: Could likely reduce cold start latency by packaging dependencies into a Lambda layer:
+    # See: https://www.npmjs.com/package/serverless-python-requirements#lambda-layer
+    # layer: true
+
+    # Zipping reduces the packages size but:
+    # a) requires minor code change
+    # b) introduces extra cold start latency
+    # See: https://www.npmjs.com/package/serverless-python-requirements#dealing-with-lambdas-size-limitations
+    # zip: true
+
+package:
+  individually: false
+  include:
+    - '!./**'
+    - './lambda_function.py'
+    - '_fblas.cpython-38-x86_64-linux-gnu.so'
+  exclude:
+    - '**'

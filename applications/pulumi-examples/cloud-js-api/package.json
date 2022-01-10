@@ -1,0 +1,8 @@
+{
+    "name": "cloud-js-httpendpoint",
+    "main": "index.js",
+    "dependencies": {
+        "@pulumi/cloud-aws": "latest",
+        "@pulumi/cloud": "latest"
+    }
+}

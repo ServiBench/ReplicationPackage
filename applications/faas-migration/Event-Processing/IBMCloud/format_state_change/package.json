@@ -1,0 +1,15 @@
+{
+  "name": "formatstatechange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Christian Müller <dev@c-mueller.de>",
+  "license": "Apache 2",
+  "dependencies": {
+    "kafkajs": "^1.10.0"
+  }
+}

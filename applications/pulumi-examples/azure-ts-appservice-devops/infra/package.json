@@ -1,0 +1,13 @@
+{
+    "name": "azure-ts-appservice-devops",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "@types/node": "^8.0.0"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^2.0.0",
+        "@pulumi/azure": "^3.0.0"
+    }
+}

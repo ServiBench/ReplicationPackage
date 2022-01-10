@@ -1,0 +1,12 @@
+{
+    "name": "typescript",
+    "devDependencies": {
+        "@types/node": "^8.0.0"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^3.0.0",
+        "@pulumi/awsx": "^0.24.0",
+        "@pulumi/pulumi": "^2.0.0",
+        "@slack/webhook": "^5.0.3"
+    }
+}

@@ -1,0 +1,16 @@
+service: cpustress
+
+provider:
+  name: aws
+  region: ${opt:region, 'eu-west-1'}
+  stage: dev
+  versionFunctions: false
+  timeout: 20
+
+functions:
+  aws-cpustress-nodejs:
+    name: aws-cpustress-nodejs
+    description: cpu intensive function
+    runtime: nodejs10.x
+    handler: cpustress.handler
+    memorySize: ${opt:memory_size,'512'}

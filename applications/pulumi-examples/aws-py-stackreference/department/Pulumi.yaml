@@ -1,0 +1,11 @@
+name: aws-py-stackreference-department
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: An AWS TypeScript Pulumi program demonstrating sharing configuration
+  via StackReference resources in Python
+template:
+  config:
+    departmentName:
+      description: The department name to use

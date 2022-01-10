@@ -1,0 +1,4 @@
+github.com/cloudant-labs/go-cloudant v0.0.0-20180620160115-81a70ee15c97 h1:ssakQ5+ZRX7Z0azFS36iCRc8vznXDKY4qf5FfuzHlDk=
+github.com/cloudant-labs/go-cloudant v0.0.0-20180620160115-81a70ee15c97/go.mod h1:zY15Yieh8ulBd4/tQa96eWENm/nR2BnMBmhSasynhEw=
+github.com/google/uuid v1.1.1 h1:Gkbcsh/GbpXz7lPftLA3P6TYMwjCLYm83jiFQZF/3gY=
+github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=

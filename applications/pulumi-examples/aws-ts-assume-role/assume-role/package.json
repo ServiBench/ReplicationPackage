@@ -1,0 +1,10 @@
+{
+    "name": "assume-role",
+    "devDependencies": {
+        "@types/node": "^8.0.0"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^2.0.0",
+        "@pulumi/aws": "^3.0.0"
+    }
+}

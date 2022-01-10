@@ -1,0 +1,52 @@
+service: thumbnail-generator
+
+frameworkVersion: ^2.50.0
+
+custom:
+  image_bucket_name: ${env:IMAGE_BUCKET, 'thumbgen-images-sb'}
+  thumb_bucket_name: ${env:THUMB_BUCKET, 'thumbgen-thumbnails-sb'}
+
+provider:
+  name: aws
+  lambdaHashingVersion: 20201221
+  runtime: java8
+  stage: ${env:STAGE, 'dev'}
+  region: ${env:REGION, 'us-east-1'}
+  memorySize: ${env:MEMORY_SIZE, 1024}
+  # The default timeout of 6s is insufficient for the
+  # thumbnail-generator function.
+  timeout: 20
+  tracing:
+    apiGateway: true
+    lambda: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
+  environment:
+    IMAGE_UPLOAD_BUCKET: ${self:custom.image_bucket_name}
+    THUMBNAIL_BUCKET: ${self:custom.thumb_bucket_name}
+
+package:
+  artifact: target/thumbnail-generator-dev.jar
+
+functions:
+  upload:
+    handler: spblab.thumbgen.lambda.UploadHandler
+    events:
+    - http:
+        path: upload
+        method: post
+  thumbnail-generator:
+    handler: spblab.thumbgen.lambda.ThumbnailGenerationHandler
+    events:
+    - s3:
+        bucket: ${self:custom.image_bucket_name}
+        event: s3:ObjectCreated:*
+resources:
+  Resources:
+    ThumbnailBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.thumb_bucket_name}

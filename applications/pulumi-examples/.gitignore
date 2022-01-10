@@ -1,0 +1,33 @@
+# sb created content
+.sb/
+logs
+
+/.pulumi/
+/.vscode/
+/.vs/
+bin/
+build/
+node_modules/
+*.pyc
+.Python
+venv/
+include/
+lib/
+yarn.lock
+package-lock.json
+Pulumi.*.yaml
+.idea/
+.ionide/
+*.iml
+key.rsa*
+obj/
+vendor
+Gopkg.lock
+
+**/ci-scripts
+
+# Java app
+.gradle/
+.settings/
+.project
+.classpath

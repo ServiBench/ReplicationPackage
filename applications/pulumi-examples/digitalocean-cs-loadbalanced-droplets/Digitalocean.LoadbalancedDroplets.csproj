@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Digitalocean.LoadbalancedDroplets</AssemblyName>
+    <RootNamespace>Digitalocean.LoadbalancedDroplets</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pulumi.DigitalOcean" Version="3.*" />
+  </ItemGroup>
+
+</Project>

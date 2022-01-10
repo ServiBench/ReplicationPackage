@@ -1,0 +1,11 @@
+{
+  "name": "model-training",
+  "version": "1.0.0",
+  "author": "ranim",
+  "license": "Apache 2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.0"
+  },
+  "description": "Serverless Plugin dependencies"
+}

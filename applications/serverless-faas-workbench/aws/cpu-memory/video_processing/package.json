@@ -1,0 +1,11 @@
+{
+  "name": "video-processing",
+  "version": "1.0.0",
+  "author": "ranim",
+  "license": "Apache 2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-python-requirements": "^5.1.1"
+  },
+  "description": "Serverless Plugin dependencies"
+}

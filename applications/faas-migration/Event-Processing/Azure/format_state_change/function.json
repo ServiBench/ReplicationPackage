@@ -1,0 +1,19 @@
+{
+  "bindings": [
+    {
+      "topicName": "statechange",
+      "subscriptionName": "statechangepull",
+      "connection": "ServiceBusConnection",
+      "name": "item",
+      "type": "serviceBusTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "queueOutput",
+      "type": "serviceBus",
+      "queueName": "output",
+      "connection": "ServiceBusConnection",
+      "direction": "out"
+    }
+  ]
+}

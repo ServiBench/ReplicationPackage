@@ -1,0 +1,348 @@
+{
+    "Id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+    "Duration": 1.157,
+    "LimitExceeded": false,
+    "Segments": [
+        {
+            "Id": "35883a90700b03ff",
+            "Document": {
+                "id": "35883a90700b03ff",
+                "name": "realworld-dev-followUser",
+                "start_time": 1639726876.934406,
+                "trace_id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+                "end_time": 1639726877.1055684,
+                "parent_id": "4705b40945169d69",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:realworld-dev-followUser",
+                    "resource_names": [
+                        "realworld-dev-followUser"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "5f80da07df2d6f78",
+                        "name": "Initialization",
+                        "start_time": 1639726876.3918383,
+                        "end_time": 1639726876.9325583,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:realworld-dev-followUser"
+                        }
+                    },
+                    {
+                        "id": "efcba5b9e48ee604",
+                        "name": "Invocation",
+                        "start_time": 1639726876.9346693,
+                        "end_time": 1639726877.1008384,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:realworld-dev-followUser"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "5e45f6ceb2e33457",
+                                "name": "DynamoDB",
+                                "start_time": 1639726876.939,
+                                "end_time": 1639726877.013,
+                                "http": {
+                                    "response": {
+                                        "status": 200
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "region": "us-east-1",
+                                    "operation": "GetItem",
+                                    "request_id": "IA1PDOMP0I5Q6JDP7302ODNVG3VV4KQNSO5AEMVJF66Q9ASUAAJG",
+                                    "table_name": "realworld-dev-users",
+                                    "resource_names": [
+                                        "realworld-dev-users"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "acdab47b445d4730",
+                                "name": "DynamoDB",
+                                "start_time": 1639726877.018,
+                                "end_time": 1639726877.045,
+                                "http": {
+                                    "response": {
+                                        "status": 200
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "region": "us-east-1",
+                                    "operation": "GetItem",
+                                    "request_id": "0JE951L8NU8ICA7AN4NM8SFNKVVV4KQNSO5AEMVJF66Q9ASUAAJG",
+                                    "table_name": "realworld-dev-users",
+                                    "resource_names": [
+                                        "realworld-dev-users"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "d99f29d734c43add",
+                                "name": "DynamoDB",
+                                "start_time": 1639726877.046,
+                                "end_time": 1639726877.074,
+                                "http": {
+                                    "response": {
+                                        "status": 200
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "region": "us-east-1",
+                                    "operation": "PutItem",
+                                    "request_id": "MA3KLCC9GFNUC9MHP2FBVFK25JVV4KQNSO5AEMVJF66Q9ASUAAJG",
+                                    "table_name": "realworld-dev-users",
+                                    "resource_names": [
+                                        "realworld-dev-users"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "99b44c9042eceb97",
+                                "name": "DynamoDB",
+                                "start_time": 1639726877.075,
+                                "end_time": 1639726877.099,
+                                "http": {
+                                    "response": {
+                                        "status": 200
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "region": "us-east-1",
+                                    "operation": "PutItem",
+                                    "request_id": "9A3BASF9HHGMEUPRCHPCH77Q6VVV4KQNSO5AEMVJF66Q9ASUAAJG",
+                                    "table_name": "realworld-dev-users",
+                                    "resource_names": [
+                                        "realworld-dev-users"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "ce6ebb4bf27f2c45",
+                        "name": "Overhead",
+                        "start_time": 1639726877.1009102,
+                        "end_time": 1639726877.105501,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:realworld-dev-followUser"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "62f7102def4bd3b3",
+            "Document": {
+                "id": "62f7102def4bd3b3",
+                "name": "dev-realworld/dev",
+                "start_time": 1639726875.949,
+                "trace_id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+                "end_time": 1639726877.103,
+                "http": {
+                    "request": {
+                        "url": "https://e0i8q30zpb.execute-api.us-east-1.amazonaws.com/dev/api/profiles/username_16_0/follow",
+                        "method": "POST",
+                        "user_agent": "k6/0.34.1 (https://k6.io/)",
+                        "client_ip": "3.238.23.225",
+                        "x_forwarded_for": true
+                    },
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "api_gateway": {
+                        "account_id": "123456789012",
+                        "rest_api_id": "e0i8q30zpb",
+                        "stage": "dev",
+                        "request_id": "893c3464-c886-4ccd-b167-1a23c69c20f8"
+                    }
+                },
+                "annotations": {
+                    "aws:api_id": "e0i8q30zpb",
+                    "aws:api_stage": "dev"
+                },
+                "metadata": {
+                    "default": {
+                        "extended_request_id": "Ke7MZGs_oAMFc4g=",
+                        "request_id": "893c3464-c886-4ccd-b167-1a23c69c20f8"
+                    }
+                },
+                "origin": "AWS::ApiGateway::Stage",
+                "resource_arn": "arn:aws:apigateway:us-east-1::/restapis/e0i8q30zpb/stages/dev",
+                "subsegments": [
+                    {
+                        "id": "380693f7d7407475",
+                        "name": "Lambda",
+                        "start_time": 1639726875.953,
+                        "end_time": 1639726877.1030002,
+                        "http": {
+                            "request": {
+                                "url": "https://lambda.us-east-1.amazonaws.com/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:realworld-dev-followUser/invocations",
+                                "method": "POST"
+                            },
+                            "response": {
+                                "status": 200,
+                                "content_length": 109
+                            }
+                        },
+                        "aws": {
+                            "function_name": "realworld-dev-followUser",
+                            "region": "us-east-1",
+                            "operation": "Invoke",
+                            "resource_names": [
+                                "realworld-dev-followUser"
+                            ]
+                        },
+                        "namespace": "aws"
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "4705b40945169d69",
+            "Document": {
+                "id": "4705b40945169d69",
+                "name": "realworld-dev-followUser",
+                "start_time": 1639726875.968,
+                "trace_id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+                "end_time": 1639726877.102,
+                "parent_id": "380693f7d7407475",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "eb6a6090-601a-4c5a-ae38-7d3b20eac550"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:realworld-dev-followUser"
+            }
+        },
+        {
+            "Id": "3969ec9511cb2d94",
+            "Document": {
+                "id": "3969ec9511cb2d94",
+                "name": "DynamoDB",
+                "start_time": 1639726877.075,
+                "trace_id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+                "end_time": 1639726877.099,
+                "parent_id": "99b44c9042eceb97",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "retries": 0,
+                    "region": "us-east-1",
+                    "operation": "PutItem",
+                    "request_id": "9A3BASF9HHGMEUPRCHPCH77Q6VVV4KQNSO5AEMVJF66Q9ASUAAJG",
+                    "table_name": "realworld-dev-users",
+                    "resource_names": [
+                        "realworld-dev-users"
+                    ]
+                },
+                "origin": "AWS::DynamoDB::Table"
+            }
+        },
+        {
+            "Id": "299a46c937b4179e",
+            "Document": {
+                "id": "299a46c937b4179e",
+                "name": "DynamoDB",
+                "start_time": 1639726877.018,
+                "trace_id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+                "end_time": 1639726877.045,
+                "parent_id": "acdab47b445d4730",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "retries": 0,
+                    "region": "us-east-1",
+                    "operation": "GetItem",
+                    "request_id": "0JE951L8NU8ICA7AN4NM8SFNKVVV4KQNSO5AEMVJF66Q9ASUAAJG",
+                    "table_name": "realworld-dev-users",
+                    "resource_names": [
+                        "realworld-dev-users"
+                    ]
+                },
+                "origin": "AWS::DynamoDB::Table"
+            }
+        },
+        {
+            "Id": "0d0a5c9b28054bd7",
+            "Document": {
+                "id": "0d0a5c9b28054bd7",
+                "name": "DynamoDB",
+                "start_time": 1639726876.939,
+                "trace_id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+                "end_time": 1639726877.013,
+                "parent_id": "5e45f6ceb2e33457",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "retries": 0,
+                    "region": "us-east-1",
+                    "operation": "GetItem",
+                    "request_id": "IA1PDOMP0I5Q6JDP7302ODNVG3VV4KQNSO5AEMVJF66Q9ASUAAJG",
+                    "table_name": "realworld-dev-users",
+                    "resource_names": [
+                        "realworld-dev-users"
+                    ]
+                },
+                "origin": "AWS::DynamoDB::Table"
+            }
+        },
+        {
+            "Id": "3221764d27c3d5d5",
+            "Document": {
+                "id": "3221764d27c3d5d5",
+                "name": "DynamoDB",
+                "start_time": 1639726877.046,
+                "trace_id": "1-61bc3f1b-114c0cc33b4e39a3c3fb34ab",
+                "end_time": 1639726877.074,
+                "parent_id": "d99f29d734c43add",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "retries": 0,
+                    "region": "us-east-1",
+                    "operation": "PutItem",
+                    "request_id": "MA3KLCC9GFNUC9MHP2FBVFK25JVV4KQNSO5AEMVJF66Q9ASUAAJG",
+                    "table_name": "realworld-dev-users",
+                    "resource_names": [
+                        "realworld-dev-users"
+                    ]
+                },
+                "origin": "AWS::DynamoDB::Table"
+            }
+        }
+    ]
+}

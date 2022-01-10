@@ -1,0 +1,77 @@
+service: aws
+
+provider:
+  name: aws
+  runtime: go1.x
+  stage: ${env:STAGE, 'dev'}
+  region: ${env:REGION, 'us-east-1'}
+  memorySize: ${env:MEMORY_SIZE, 1024}
+  tracing:
+    apiGateway: true
+    lambda: true
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  get:
+    handler: bin/get
+    events:
+      - http:
+          path: get
+          method: get
+  done:
+    handler: bin/done
+    events:
+      - http:
+          path: done
+          method: post
+  lst:
+    handler: bin/lst
+    events:
+      - http:
+          path: lst
+          method: get
+  put:
+    handler: bin/put
+    events:
+      - http:
+          path: put
+          method: post
+  del:
+    handler: bin/del
+    events:
+      - http:
+          path: del
+          method: post
+
+resources:
+  Resources:
+    TodosDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Delete
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: ID
+            AttributeType: S
+        KeySchema:
+          - AttributeName: ID
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+

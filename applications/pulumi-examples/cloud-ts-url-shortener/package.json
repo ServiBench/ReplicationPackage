@@ -1,0 +1,11 @@
+{
+    "name": "url-shortener",
+    "version": "1.0.0",
+    "devDependencies": {
+        "@types/node": "^8.0.0"
+    },
+    "dependencies": {
+        "@pulumi/cloud-aws": "latest",
+        "@pulumi/cloud": "latest"
+    }
+}
