@@ -1,0 +1,3445 @@
+{
+    "Id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+    "Duration": 1.623,
+    "LimitExceeded": false,
+    "Segments": [
+        {
+            "Id": "57b25a6b3910d754",
+            "Document": {
+                "id": "57b25a6b3910d754",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.8332975,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.9642859,
+                "parent_id": "32a79bb462e714b6",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                    "resource_names": [
+                        "matrix-mul-dev-mul_worker"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "877e1e81718f4469",
+                        "name": "Invocation",
+                        "start_time": 1639806385.833343,
+                        "end_time": 1639806385.963994,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "4e5190020eb3fb06",
+                                "name": "S3",
+                                "start_time": 1639806385.83399,
+                                "end_time": 1639806385.877614,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 7801
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KZYCBGA27SFNRB",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_0",
+                                    "id_2": "yNDJQp2mXJf2GH4DfhHQg14VWklIGKqcoKb3tHRdT8M12KFpuamXXVBvdroE4v4+MBBXRWUvnec=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "65b993a6f6ae4d20",
+                                "name": "S3",
+                                "start_time": 1639806385.87921,
+                                "end_time": 1639806385.92733,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KT0QZ95QH9PN8T",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "GGzmvn1+4NE+cy4w5ZZUXXmdK9VYkqPXtjpWNvTyToOoMBM7WJhhpGNBSUc/wHGiia52aeKkha8=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "fca9c3c67473467d",
+                                "name": "S3",
+                                "start_time": 1639806385.930872,
+                                "end_time": 1639806385.963275,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "operation": "PutObject",
+                                    "request_id": "91KZZ9KGGS53P35T",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_0",
+                                    "id_2": "whYET7aETnabP8di/pABsJyEOQXcbNLACdpRBRQhejYGDUmI2rYDjOzfzSDVE+es0a72nDvGgx0=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "f7f1be0f9e574bc1",
+                        "name": "Overhead",
+                        "start_time": 1639806385.964029,
+                        "end_time": 1639806385.9642544,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "31aff9aeb47775fa",
+            "Document": {
+                "id": "31aff9aeb47775fa",
+                "name": "matrix-mul-dev-build_report",
+                "start_time": 1639806386.242,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.904,
+                "parent_id": "1b666be485f96295",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "0df2df13-01fb-454e-8a56-fc7c1d1f430a"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-build_report"
+            }
+        },
+        {
+            "Id": "47b93c1d0e742743",
+            "Document": {
+                "id": "47b93c1d0e742743",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.8298192,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.985735,
+                "parent_id": "703700a377e55df6",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                    "resource_names": [
+                        "matrix-mul-dev-mul_worker"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "e47d7644647f8cc4",
+                        "name": "Invocation",
+                        "start_time": 1639806385.8298845,
+                        "end_time": 1639806385.985498,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "c5930b03622321de",
+                                "name": "S3",
+                                "start_time": 1639806385.830402,
+                                "end_time": 1639806385.885822,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 7801
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "request_id": "91KXXKG6CE421EEH",
+                                    "operation": "GetObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_4",
+                                    "id_2": "Nra9jkqUWY6iLvqVL89QnYRSFCy7BY4ABQY+cCndiUGoVBF+O3zaNSQ3X+JzS8lYDIydBqHV74M=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "308b2c351c6532b4",
+                                "name": "S3",
+                                "start_time": 1639806385.887391,
+                                "end_time": 1639806385.92556,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "request_id": "91KTH30ZH0HRCGVR",
+                                    "operation": "GetObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "6hbZPBkWUTEk2JwzxwjCoiSgD9KvrKlT4y/Z3IbmZMq99KDkymqON+pmneVtS+dqxwDygS3p71s=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "a724a67dced00af8",
+                                "name": "S3",
+                                "start_time": 1639806385.929266,
+                                "end_time": 1639806385.984823,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "91KGA31WGDRNPMV9",
+                                    "operation": "PutObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_4",
+                                    "id_2": "DoaruAqfrigd8rbEOvPfW8MnUp7N9pvGPk2KfBV7JiiVHFz6fw0RUBZ/jfr3xzH3bKcSfOOe5F4=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a6b8276891aa699f",
+                        "name": "Overhead",
+                        "start_time": 1639806385.9855256,
+                        "end_time": 1639806385.985709,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "2f436d043724eb8e",
+            "Document": {
+                "id": "2f436d043724eb8e",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.8362918,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.9747803,
+                "parent_id": "4f84d5e82f3ad913",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                    "resource_names": [
+                        "matrix-mul-dev-mul_worker"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "7b4e994019de889a",
+                        "name": "Invocation",
+                        "start_time": 1639806385.836344,
+                        "end_time": 1639806385.9745262,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "e487c736ce2f1b24",
+                                "name": "S3",
+                                "start_time": 1639806385.83685,
+                                "end_time": 1639806385.897053,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 7801
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KKVGWPY3D0Q6XC",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_1",
+                                    "id_2": "jaWrc2w+0LWU+EyoR4mux8f5iIKiOF5ITOzgZ9FoMPIAmATgQ7ssSeAPyoJ/TITAlD/ANH9tj24=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "c49b0e10d636619b",
+                                "name": "S3",
+                                "start_time": 1639806385.898479,
+                                "end_time": 1639806385.942628,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KS13CNP6N04HEV",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "WFtr64SGENwl345ijpdoBoiFSBD+QK1GhonptnSVt0TfRqQ0dSy7GVefgMPyTaq++2Uc4bQdn9w=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "82cd4f7cf9551372",
+                                "name": "S3",
+                                "start_time": 1639806385.946115,
+                                "end_time": 1639806385.973836,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "operation": "PutObject",
+                                    "request_id": "91KK6FDKDR1HGW9T",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_1",
+                                    "id_2": "lKMdJ5C4lpV6Se8XHmZcUbwR0tN3ZSjXqAuc9dwpgDM9Kz4PURnyteLcGeNDSWhZ/JNhbpcBuBU=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3acc6cee40f0e4e9",
+                        "name": "Overhead",
+                        "start_time": 1639806385.9745893,
+                        "end_time": 1639806385.9747546,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "4f84d5e82f3ad913",
+            "Document": {
+                "id": "4f84d5e82f3ad913",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.822,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.977,
+                "parent_id": "499f687cbcadebc1",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "a7246325-0003-43a8-989f-424e02aa588b"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+            }
+        },
+        {
+            "Id": "6bd8bec829421a09",
+            "Document": {
+                "id": "6bd8bec829421a09",
+                "name": "matrix-mul-dev-build_report",
+                "start_time": 1639806386.2463923,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.9019115,
+                "parent_id": "31aff9aeb47775fa",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-build_report",
+                    "resource_names": [
+                        "matrix-mul-dev-build_report"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "aa6e080d5947f193",
+                        "name": "Invocation",
+                        "start_time": 1639806386.2464533,
+                        "end_time": 1639806386.90159,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-build_report"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "8c483c8ab7a40e14",
+                                "name": "S3",
+                                "start_time": 1639806386.247482,
+                                "end_time": 1639806386.306403,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "request_id": "0W40HCXEK2PZ534V",
+                                    "operation": "GetObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "zur18uAmR7XDCj9a8nVavgIB2/hHA9EQyVM0hnpcO6q6QiZUEB8w9Y2m1aVEc526t3/2S3oahy8=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "0092b99c8d20b3a8",
+                                "name": "S3",
+                                "start_time": 1639806386.308734,
+                                "end_time": 1639806386.416294,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 17499
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "request_id": "0W46BCGG883ZPT7W",
+                                    "operation": "GetObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_result",
+                                    "id_2": "qSlBnWn2zem25FYoMjmAl7SbAU2tg31LzxsSLZP7z+qmfums+Wlxv4O37RLFDU4snIEleJfyQNc=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "c57272658f3da1b6",
+                                "name": "S3",
+                                "start_time": 1639806386.418046,
+                                "end_time": 1639806386.503079,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W4CFKK97XDQPZSZ",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "22KegyeHXzes9cxCO69581pNwOFcIZ6wdIjA7mq1L+3IfjctMpqLDylIqCCu+9kTFYUAmocSkIw=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "ab02d381c59f7f1a",
+                                "name": "S3",
+                                "start_time": 1639806386.503535,
+                                "end_time": 1639806386.521337,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W48THKRKQC4WC18",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_result",
+                                    "id_2": "0WJWTPZNQAdKkxeId0qMzBLx2yLIj+aT0NpboECRS/YUnoctchRA3JDA6DQphm2wklR0767vqwQ=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "d76404df568771b4",
+                                "name": "S3",
+                                "start_time": 1639806386.521714,
+                                "end_time": 1639806386.541874,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W433MSQ1PXA4D29",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_0",
+                                    "id_2": "Ln7yV98tBd6ZbeRcopOraEjeRcdN9ZYLvrqTolTGT09anLBpa9Fm00HyOX1wQ2cJkE3doH/70FQ=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "1324d4cd59b8c725",
+                                "name": "S3",
+                                "start_time": 1639806386.542199,
+                                "end_time": 1639806386.62527,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W4108K68HYAFRCB",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_0",
+                                    "id_2": "jiFSokRqBO5Eh+N9foVBEHh0SDYRzJVW8SOM/nLlIkG8Hc6UPsmgYbm0+e0IMNABR5ZeZN/PoQQ=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "8ae7ee9a4e654d24",
+                                "name": "S3",
+                                "start_time": 1639806386.625578,
+                                "end_time": 1639806386.723272,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W44XRMFD0576H0C",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_1",
+                                    "id_2": "SAx1Opa8XmTQySSbtkS0Bm6rgYcxZn/cami8xX0iNq6PF5I3It/ZPGDxRAnrgBKJ2hkOL2Tyfn8=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "2530c5a56dbc631e",
+                                "name": "S3",
+                                "start_time": 1639806386.724379,
+                                "end_time": 1639806386.744695,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W40BHDG52M1HMTR",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_1",
+                                    "id_2": "FQ80FWB3xvx7EyYLy06xG3Ay9uzLzKxBZy5w+rqnSK0V9PkETWOoR+Eyehto9PaXhsq+tJWz0+8=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "09d4ace8c385eeae",
+                                "name": "S3",
+                                "start_time": 1639806386.745168,
+                                "end_time": 1639806386.764346,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W4AM3VSCDWNY34Z",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_2",
+                                    "id_2": "Yok0in81wav3fSrVKl78WIZ/X3xlE9d4GyU25/1akJ4ZhKeqdYmmHa/oJbVitdOqn2tgpkXCvno=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "0d4d249f044687cd",
+                                "name": "S3",
+                                "start_time": 1639806386.764786,
+                                "end_time": 1639806386.818691,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W40JP7D8G33P0T2",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_2",
+                                    "id_2": "7AffLgY58RYBOqJwzT8jrXbIAyOXinZEqTLOynJ6o8bLAUqJFGVuMV/0Zb0jAIAgL0EIf9FiyWo=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "3adac5009a616fa0",
+                                "name": "S3",
+                                "start_time": 1639806386.819113,
+                                "end_time": 1639806386.840317,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W4238RT0KWMSQW9",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_3",
+                                    "id_2": "GdI4Gm7ov7l/R9k2Mfbwbd87lSG0ABiYYPCWHp4tcrmsieGqEds6scQXBYcrWXtbKbtDVvUjP/4=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "9040f0ba02456ac2",
+                                "name": "S3",
+                                "start_time": 1639806386.840745,
+                                "end_time": 1639806386.860503,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W48GY0GE1GVM1T2",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_3",
+                                    "id_2": "Wm1oaR4S/KNSmhEIuvUF+nHhyamvQ8771y4N+62bpOcE2eMN80jEnzPPbNRA4Bzns/iv0qTO3UY=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "93d3ff94324e10ab",
+                                "name": "S3",
+                                "start_time": 1639806386.860874,
+                                "end_time": 1639806386.880031,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W4D2QRB60VJM013",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_4",
+                                    "id_2": "a+jQzIvPHZrpwk7FbrjDZ7ArT2rvsW/2r/6HOHZ/rpK+pdQ/kK46YUNQ3BVUBUxuSocve1NIiGA=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "2059de385d6266f5",
+                                "name": "S3",
+                                "start_time": 1639806386.880382,
+                                "end_time": 1639806386.900628,
+                                "http": {
+                                    "response": {
+                                        "status": 204,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "0W43EB3C1RJBY65Z",
+                                    "operation": "DeleteObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_4",
+                                    "id_2": "PI3wjbzkD2gAnTv0Nys+dgKw2xLAYZYk8E09xw/ywiGRezTpb5HPXf8PWVGXro7RzeVVK7U8pXE=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "74db3574a51f5c22",
+                        "name": "Overhead",
+                        "start_time": 1639806386.9016614,
+                        "end_time": 1639806386.9018862,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-build_report"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "6e7c906344fc1e50",
+            "Document": {
+                "id": "6e7c906344fc1e50",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.8264742,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.97988,
+                "parent_id": "05f7a1ead0cf4eef",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                    "resource_names": [
+                        "matrix-mul-dev-mul_worker"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "d9d0d0a65b75df57",
+                        "name": "Invocation",
+                        "start_time": 1639806385.8265305,
+                        "end_time": 1639806385.9796338,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "6149493304eee891",
+                                "name": "S3",
+                                "start_time": 1639806385.827366,
+                                "end_time": 1639806385.871092,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 7801
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KPEZE6CT2R2Y3R",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_3",
+                                    "id_2": "dKgtZlR0B8GzyBqns2VRuRpushL97k+T4suCzt642OtQW4BRy+eKgsKcW3f52aJvA0tbsd1HpqE=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "2aa633320965af50",
+                                "name": "S3",
+                                "start_time": 1639806385.872611,
+                                "end_time": 1639806385.90876,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KQBXDBTEQ1HFJA",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "xmw8TjK/LDePxqCaHWtTKsxXps8aU0IbE+a+5s593wx5vXniSNChhDwZgWiqyeGMHvufsb0BzEM=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "16a0c19487d3b03a",
+                                "name": "S3",
+                                "start_time": 1639806385.912066,
+                                "end_time": 1639806385.978984,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "operation": "PutObject",
+                                    "request_id": "91KV8GC7J3ZJMW58",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_3",
+                                    "id_2": "yCfiygsp23vgkphnxdHkXrTbNrBmO1Fd5LesHhFYBsRdDpr7hxndqFns8JTNp/EqIVVRSUcZltQ=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "c14647e314f0e536",
+                        "name": "Overhead",
+                        "start_time": 1639806385.9796755,
+                        "end_time": 1639806385.9798396,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "01b855f02acd7d3c",
+            "Document": {
+                "id": "01b855f02acd7d3c",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.8312287,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.970939,
+                "parent_id": "2f80c3219106c044",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                    "resource_names": [
+                        "matrix-mul-dev-mul_worker"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "c924f5fb9ebe8b61",
+                        "name": "Invocation",
+                        "start_time": 1639806385.8313391,
+                        "end_time": 1639806385.970531,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "6a1765b1e67ab1e6",
+                                "name": "S3",
+                                "start_time": 1639806385.83213,
+                                "end_time": 1639806385.893989,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 7801
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KYZQV4VX2SVGSX",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_2",
+                                    "id_2": "Ff6SJHfsiDLf73gORxW0UyOrvc/nJtWaORXzw6ux5dgZVj/IMdjwN9fIoBic9oVCyoDLRv3cnX0=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "b73e4b6f46ce79ef",
+                                "name": "S3",
+                                "start_time": 1639806385.895587,
+                                "end_time": 1639806385.936639,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "91KS73475MV6YT18",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "cd9JBIKUYymnRBex3SQ3cl/+yafaidtu5U/eW3L9iKAld0fI8uwEnkKouxHymA5GYpJ0DptTWA4=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "80857cd5c255f49b",
+                                "name": "S3",
+                                "start_time": 1639806385.940406,
+                                "end_time": 1639806385.969847,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "operation": "PutObject",
+                                    "request_id": "91KXPF0T7PWF34E2",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_2",
+                                    "id_2": "hTZDCC7KOa5qLCXPcqwTCuXf8UCXhjfnx79F5f68XahBSKiC27bVUaxkEDNqNBfbeRf/Fz+oW5w=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1ebbd2c687409626",
+                        "name": "Overhead",
+                        "start_time": 1639806385.9705915,
+                        "end_time": 1639806385.970886,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "54d3bd3ad1c53fdb",
+            "Document": {
+                "id": "54d3bd3ad1c53fdb",
+                "name": "matrix-mul-dev-result_builder",
+                "start_time": 1639806386.004,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.228,
+                "parent_id": "7b1120bff2fd90f9",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "74c78983-5e81-46ed-9dc3-14e0601079b4"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-result_builder"
+            }
+        },
+        {
+            "Id": "05f7a1ead0cf4eef",
+            "Document": {
+                "id": "05f7a1ead0cf4eef",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.821,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.982,
+                "parent_id": "26fc46084dcc44db",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "3554cf31-aff7-45df-9242-7a002b79648c"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+            }
+        },
+        {
+            "Id": "70c760ba52c27260",
+            "Document": {
+                "id": "70c760ba52c27260",
+                "name": "matrix-mul-dev-result_builder",
+                "start_time": 1639806386.0111654,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.2266212,
+                "parent_id": "54d3bd3ad1c53fdb",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-result_builder",
+                    "resource_names": [
+                        "matrix-mul-dev-result_builder"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "2ed41fb21983582d",
+                        "name": "Invocation",
+                        "start_time": 1639806386.0112135,
+                        "end_time": 1639806386.226241,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-result_builder"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "768b886040f56f62",
+                                "name": "S3",
+                                "start_time": 1639806386.011896,
+                                "end_time": 1639806386.069631,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "0W4CQNZE1XE0V68T",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "K+BMliWjwVF5Uv/e5uamG7RgwkPu26eKUoJZ93ZDqDf2cRLUclkX8w6gDo4Z2MomSz0r/uQx2hA=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "4a57946d830a25c7",
+                                "name": "S3",
+                                "start_time": 1639806386.071787,
+                                "end_time": 1639806386.110231,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 15786
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "0W4CHY1Z0G9848M8",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_0",
+                                    "id_2": "7wR1B/4ZmrgppA7wQG3ptjZ0p+NxLPWXizyR0Q2cJpAvCP71kib6ds76/6WmuiSQKX4BECjZGvg=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "b535654b6c281f65",
+                                "name": "S3",
+                                "start_time": 1639806386.112274,
+                                "end_time": 1639806386.132669,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 15775
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "0W46XAVTE4JNVR1V",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_1",
+                                    "id_2": "qOUP4cbRddW2bWlUm5eHPXRl4JydFnmK0+A8db7fdPnWN5vi7t9Pea3OKuETEge04CaspBSpAOA=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "4a1981fca3c5d46c",
+                                "name": "S3",
+                                "start_time": 1639806386.134596,
+                                "end_time": 1639806386.15202,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 15772
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "0W45SBBC5RZM8XCE",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_2",
+                                    "id_2": "vR37L5zjbQ40I5oVyi9X7FDxaftDyZ7OwMw0L4Y1zijxLFZtDgmaJpUUACXfgFavWrQ/ZPgoJGU=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "3d49c1e71f0e9e21",
+                                "name": "S3",
+                                "start_time": 1639806386.153987,
+                                "end_time": 1639806386.16983,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 15770
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "0W46CYGJZMD5X9SV",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_3",
+                                    "id_2": "n+fzIvlioXNYaA3h5CiLoeQa7Me5wazQYZYDrUlNPbIx6zxzccF5kNUeYw9gBXSU+fOcBMMI57k=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "efe9bc1a237955ef",
+                                "name": "S3",
+                                "start_time": 1639806386.171817,
+                                "end_time": 1639806386.189405,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 15781
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "operation": "GetObject",
+                                    "request_id": "0W4BWQTFCSE29YZD",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_4",
+                                    "id_2": "1IUr9rvin6qWaYYT8MIoqrUPCyNXyMlviMipup9Gc3Zp5xCgG2wS2tT3a+sd8PQ5635Gkm3oi78=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "f3669bee9a36ca3c",
+                                "name": "S3",
+                                "start_time": 1639806386.192398,
+                                "end_time": 1639806386.224663,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "operation": "PutObject",
+                                    "request_id": "0W447S4J5K6MC1WB",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_result",
+                                    "id_2": "TuwWhkMFzQKQV/umaHKydCpNyffrgVrc1rkpJD/4SksmLcUGUifuzJVwo/VkOsBh1VN5stKcT7k=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "05cd2295c477ca9a",
+                        "name": "Overhead",
+                        "start_time": 1639806386.2263207,
+                        "end_time": 1639806386.226585,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-result_builder"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "cc765bcfefc2f724",
+            "Document": {
+                "id": "cc765bcfefc2f724",
+                "name": "MatrixMul",
+                "start_time": 1639806385.369,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.906,
+                "parent_id": "203de8fb4b0a5589",
+                "aws": {
+                    "resource_arn": "arn:aws:states:us-east-1:123456789012:express:MatrixMul:ec2c9f53-41bd-46ff-aa20-ebb9f71bf557:0077a1f5-dc32-44aa-82c0-1931edcf8197"
+                },
+                "origin": "AWS::StepFunctions::StateMachine",
+                "resource_arn": "arn:aws:states:us-east-1:123456789012:stateMachine:MatrixMul",
+                "cause": {},
+                "subsegments": [
+                    {
+                        "id": "e0ffd8d65b5da518",
+                        "name": "CreateMatrix",
+                        "start_time": 1639806385.411,
+                        "end_time": 1639806385.547,
+                        "cause": {},
+                        "subsegments": [
+                            {
+                                "id": "18930b3fe948c6c2",
+                                "name": "Lambda",
+                                "start_time": 1639806385.437,
+                                "end_time": 1639806385.542,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 172
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "log_type": "Tail",
+                                    "status_code": 200,
+                                    "account_id": "123456789012",
+                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-create_matrix",
+                                    "invocation_type": "RequestResponse",
+                                    "region": "us-east-1",
+                                    "operation": "Invoke",
+                                    "request_id": "867549be-9440-442e-bc36-1641307ad860",
+                                    "resource_names": [
+                                        "matrix-mul-dev-create_matrix"
+                                    ]
+                                },
+                                "namespace": "aws",
+                                "cause": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "a612af4448a23746",
+                        "name": "ChooseVariant",
+                        "start_time": 1639806385.547,
+                        "end_time": 1639806385.547,
+                        "cause": {}
+                    },
+                    {
+                        "id": "fdfd6b46ef419f26",
+                        "name": "AppendWorkerCount",
+                        "start_time": 1639806385.547,
+                        "end_time": 1639806385.548,
+                        "cause": {}
+                    },
+                    {
+                        "id": "f8e5fa7595575576",
+                        "name": "DistributeWork",
+                        "start_time": 1639806385.548,
+                        "end_time": 1639806385.804,
+                        "cause": {},
+                        "subsegments": [
+                            {
+                                "id": "49c5872c64eea8df",
+                                "name": "Lambda",
+                                "start_time": 1639806385.548,
+                                "end_time": 1639806385.803,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 171
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "log_type": "Tail",
+                                    "status_code": 200,
+                                    "account_id": "123456789012",
+                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-parallel_mul_scheduler",
+                                    "invocation_type": "RequestResponse",
+                                    "region": "us-east-1",
+                                    "operation": "Invoke",
+                                    "request_id": "9c20cd4f-f633-4cef-a7a0-e4078172307b",
+                                    "resource_names": [
+                                        "matrix-mul-dev-parallel_mul_scheduler"
+                                    ]
+                                },
+                                "namespace": "aws",
+                                "cause": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "235bf0a03a6022eb",
+                        "name": "ParallelMul",
+                        "start_time": 1639806385.804,
+                        "end_time": 1639806385.989,
+                        "cause": {},
+                        "subsegments": [
+                            {
+                                "id": "78995e6b835d80ad",
+                                "name": "Branch 1",
+                                "start_time": 1639806385.804,
+                                "end_time": 1639806385.979,
+                                "cause": {},
+                                "subsegments": [
+                                    {
+                                        "id": "38dfb1427aa92685",
+                                        "name": "AssignWorkerID2",
+                                        "start_time": 1639806385.804,
+                                        "end_time": 1639806385.805,
+                                        "cause": {}
+                                    },
+                                    {
+                                        "id": "e2187e8660a7c207",
+                                        "name": "MulWorker2",
+                                        "start_time": 1639806385.806,
+                                        "end_time": 1639806385.979,
+                                        "cause": {},
+                                        "subsegments": [
+                                            {
+                                                "id": "499f687cbcadebc1",
+                                                "name": "Lambda",
+                                                "start_time": 1639806385.806,
+                                                "end_time": 1639806385.978,
+                                                "http": {
+                                                    "response": {
+                                                        "status": 200,
+                                                        "content_length": 170
+                                                    }
+                                                },
+                                                "aws": {
+                                                    "retries": 0,
+                                                    "log_type": "Tail",
+                                                    "status_code": 200,
+                                                    "account_id": "123456789012",
+                                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                                                    "invocation_type": "RequestResponse",
+                                                    "region": "us-east-1",
+                                                    "operation": "Invoke",
+                                                    "request_id": "a7246325-0003-43a8-989f-424e02aa588b",
+                                                    "resource_names": [
+                                                        "matrix-mul-dev-mul_worker"
+                                                    ]
+                                                },
+                                                "namespace": "aws",
+                                                "cause": {}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "69276c63568998cd",
+                                "name": "Branch 0",
+                                "start_time": 1639806385.804,
+                                "end_time": 1639806385.97,
+                                "cause": {},
+                                "subsegments": [
+                                    {
+                                        "id": "9a0bd28661306b40",
+                                        "name": "AssignWorkerID1",
+                                        "start_time": 1639806385.804,
+                                        "end_time": 1639806385.804,
+                                        "cause": {}
+                                    },
+                                    {
+                                        "id": "0cadb2fc689c95b9",
+                                        "name": "MulWorker1",
+                                        "start_time": 1639806385.805,
+                                        "end_time": 1639806385.97,
+                                        "cause": {},
+                                        "subsegments": [
+                                            {
+                                                "id": "25dfde1883fa40c9",
+                                                "name": "Lambda",
+                                                "start_time": 1639806385.805,
+                                                "end_time": 1639806385.969,
+                                                "http": {
+                                                    "response": {
+                                                        "status": 200,
+                                                        "content_length": 170
+                                                    }
+                                                },
+                                                "aws": {
+                                                    "retries": 0,
+                                                    "log_type": "Tail",
+                                                    "status_code": 200,
+                                                    "account_id": "123456789012",
+                                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                                                    "invocation_type": "RequestResponse",
+                                                    "region": "us-east-1",
+                                                    "operation": "Invoke",
+                                                    "request_id": "3626cef7-a2cb-46db-a377-d400b3acc9f9",
+                                                    "resource_names": [
+                                                        "matrix-mul-dev-mul_worker"
+                                                    ]
+                                                },
+                                                "namespace": "aws",
+                                                "cause": {}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "cc9723f59af6dc84",
+                                "name": "Branch 4",
+                                "start_time": 1639806385.804,
+                                "end_time": 1639806385.985,
+                                "cause": {},
+                                "subsegments": [
+                                    {
+                                        "id": "5cf4a153582ef6fe",
+                                        "name": "AssignWorkerID4",
+                                        "start_time": 1639806385.805,
+                                        "end_time": 1639806385.805,
+                                        "cause": {}
+                                    },
+                                    {
+                                        "id": "3ed00a443ea2f598",
+                                        "name": "MulWorker4",
+                                        "start_time": 1639806385.808,
+                                        "end_time": 1639806385.985,
+                                        "cause": {},
+                                        "subsegments": [
+                                            {
+                                                "id": "26fc46084dcc44db",
+                                                "name": "Lambda",
+                                                "start_time": 1639806385.808,
+                                                "end_time": 1639806385.984,
+                                                "http": {
+                                                    "response": {
+                                                        "status": 200,
+                                                        "content_length": 170
+                                                    }
+                                                },
+                                                "aws": {
+                                                    "retries": 0,
+                                                    "log_type": "Tail",
+                                                    "status_code": 200,
+                                                    "account_id": "123456789012",
+                                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                                                    "invocation_type": "RequestResponse",
+                                                    "region": "us-east-1",
+                                                    "operation": "Invoke",
+                                                    "request_id": "3554cf31-aff7-45df-9242-7a002b79648c",
+                                                    "resource_names": [
+                                                        "matrix-mul-dev-mul_worker"
+                                                    ]
+                                                },
+                                                "namespace": "aws",
+                                                "cause": {}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "3f1e21548a9d74ca",
+                                "name": "Branch 3",
+                                "start_time": 1639806385.804,
+                                "end_time": 1639806385.989,
+                                "cause": {},
+                                "subsegments": [
+                                    {
+                                        "id": "1b770003864ad428",
+                                        "name": "AssignWorkerID5",
+                                        "start_time": 1639806385.805,
+                                        "end_time": 1639806385.805,
+                                        "cause": {}
+                                    },
+                                    {
+                                        "id": "1dfb392495a4ebf7",
+                                        "name": "MulWorker5",
+                                        "start_time": 1639806385.807,
+                                        "end_time": 1639806385.989,
+                                        "cause": {},
+                                        "subsegments": [
+                                            {
+                                                "id": "352ec9a4ec741a1f",
+                                                "name": "Lambda",
+                                                "start_time": 1639806385.807,
+                                                "end_time": 1639806385.989,
+                                                "http": {
+                                                    "response": {
+                                                        "status": 200,
+                                                        "content_length": 170
+                                                    }
+                                                },
+                                                "aws": {
+                                                    "retries": 0,
+                                                    "log_type": "Tail",
+                                                    "status_code": 200,
+                                                    "account_id": "123456789012",
+                                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                                                    "invocation_type": "RequestResponse",
+                                                    "region": "us-east-1",
+                                                    "operation": "Invoke",
+                                                    "request_id": "c00d47cc-5ba3-46de-849b-9c0176907ea2",
+                                                    "resource_names": [
+                                                        "matrix-mul-dev-mul_worker"
+                                                    ]
+                                                },
+                                                "namespace": "aws",
+                                                "cause": {}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "4ae89c8a8caadff5",
+                                "name": "Branch 2",
+                                "start_time": 1639806385.804,
+                                "end_time": 1639806385.975,
+                                "cause": {},
+                                "subsegments": [
+                                    {
+                                        "id": "8f7276836714df40",
+                                        "name": "AssignWorkerID3",
+                                        "start_time": 1639806385.805,
+                                        "end_time": 1639806385.805,
+                                        "cause": {}
+                                    },
+                                    {
+                                        "id": "8963423219475ad3",
+                                        "name": "MulWorker3",
+                                        "start_time": 1639806385.807,
+                                        "end_time": 1639806385.974,
+                                        "cause": {},
+                                        "subsegments": [
+                                            {
+                                                "id": "2e32d66c31516eca",
+                                                "name": "Lambda",
+                                                "start_time": 1639806385.807,
+                                                "end_time": 1639806385.974,
+                                                "http": {
+                                                    "response": {
+                                                        "status": 200,
+                                                        "content_length": 170
+                                                    }
+                                                },
+                                                "aws": {
+                                                    "retries": 0,
+                                                    "log_type": "Tail",
+                                                    "status_code": 200,
+                                                    "account_id": "123456789012",
+                                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker",
+                                                    "invocation_type": "RequestResponse",
+                                                    "region": "us-east-1",
+                                                    "operation": "Invoke",
+                                                    "request_id": "14492047-a885-42b1-b428-452ba1fce007",
+                                                    "resource_names": [
+                                                        "matrix-mul-dev-mul_worker"
+                                                    ]
+                                                },
+                                                "namespace": "aws",
+                                                "cause": {}
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1bdb72a99a9ddc96",
+                        "name": "BuildResult",
+                        "start_time": 1639806385.99,
+                        "end_time": 1639806386.23,
+                        "cause": {},
+                        "subsegments": [
+                            {
+                                "id": "7b1120bff2fd90f9",
+                                "name": "Lambda",
+                                "start_time": 1639806385.99,
+                                "end_time": 1639806386.23,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 171
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "log_type": "Tail",
+                                    "status_code": 200,
+                                    "account_id": "123456789012",
+                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-result_builder",
+                                    "invocation_type": "RequestResponse",
+                                    "region": "us-east-1",
+                                    "operation": "Invoke",
+                                    "request_id": "74c78983-5e81-46ed-9dc3-14e0601079b4",
+                                    "resource_names": [
+                                        "matrix-mul-dev-result_builder"
+                                    ]
+                                },
+                                "namespace": "aws",
+                                "cause": {}
+                            }
+                        ]
+                    },
+                    {
+                        "id": "aed6a085b5ab9586",
+                        "name": "GenReport",
+                        "start_time": 1639806386.23,
+                        "end_time": 1639806386.906,
+                        "cause": {},
+                        "subsegments": [
+                            {
+                                "id": "1b666be485f96295",
+                                "name": "Lambda",
+                                "start_time": 1639806386.23,
+                                "end_time": 1639806386.906,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 248
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "log_type": "Tail",
+                                    "status_code": 200,
+                                    "account_id": "123456789012",
+                                    "function_name": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-build_report",
+                                    "invocation_type": "RequestResponse",
+                                    "region": "us-east-1",
+                                    "operation": "Invoke",
+                                    "request_id": "0df2df13-01fb-454e-8a56-fc7c1d1f430a",
+                                    "resource_names": [
+                                        "matrix-mul-dev-build_report"
+                                    ]
+                                },
+                                "namespace": "aws",
+                                "cause": {}
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "2f80c3219106c044",
+            "Document": {
+                "id": "2f80c3219106c044",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.824,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.973,
+                "parent_id": "2e32d66c31516eca",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "14492047-a885-42b1-b428-452ba1fce007"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+            }
+        },
+        {
+            "Id": "32a79bb462e714b6",
+            "Document": {
+                "id": "32a79bb462e714b6",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.825,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.968,
+                "parent_id": "25dfde1883fa40c9",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "3626cef7-a2cb-46db-a377-d400b3acc9f9"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+            }
+        },
+        {
+            "Id": "7f161e31824cd192",
+            "Document": {
+                "id": "7f161e31824cd192",
+                "name": "matrix-mul-dev-parallel_mul_scheduler",
+                "start_time": 1639806385.562,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.801,
+                "parent_id": "49c5872c64eea8df",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "9c20cd4f-f633-4cef-a7a0-e4078172307b"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-parallel_mul_scheduler"
+            }
+        },
+        {
+            "Id": "689daf05902f4f8b",
+            "Document": {
+                "id": "689daf05902f4f8b",
+                "name": "matrix-mul-dev-create_matrix",
+                "start_time": 1639806385.46,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.54,
+                "parent_id": "18930b3fe948c6c2",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "867549be-9440-442e-bc36-1641307ad860"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-create_matrix"
+            }
+        },
+        {
+            "Id": "703700a377e55df6",
+            "Document": {
+                "id": "703700a377e55df6",
+                "name": "matrix-mul-dev-mul_worker",
+                "start_time": 1639806385.82,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.988,
+                "parent_id": "352ec9a4ec741a1f",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "c00d47cc-5ba3-46de-849b-9c0176907ea2"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-mul_worker"
+            }
+        },
+        {
+            "Id": "09310a14d13e08bb",
+            "Document": {
+                "id": "09310a14d13e08bb",
+                "name": "dev-matrix-mul/dev",
+                "start_time": 1639806385.283,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.403,
+                "http": {
+                    "request": {
+                        "url": "https://icyvuu0re9.execute-api.us-east-1.amazonaws.com/dev/run",
+                        "method": "POST",
+                        "user_agent": "k6/0.34.1 (https://k6.io/)",
+                        "client_ip": "3.238.23.225",
+                        "x_forwarded_for": true
+                    },
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "api_gateway": {
+                        "account_id": "123456789012",
+                        "rest_api_id": "icyvuu0re9",
+                        "stage": "dev",
+                        "request_id": "ec2c9f53-41bd-46ff-aa20-ebb9f71bf557"
+                    }
+                },
+                "annotations": {
+                    "aws:api_id": "icyvuu0re9",
+                    "aws:api_stage": "dev"
+                },
+                "metadata": {
+                    "default": {
+                        "extended_request_id": "Kh9TuGm2oAMFb4Q=",
+                        "request_id": "ec2c9f53-41bd-46ff-aa20-ebb9f71bf557"
+                    }
+                },
+                "origin": "AWS::ApiGateway::Stage",
+                "resource_arn": "arn:aws:apigateway:us-east-1::/restapis/icyvuu0re9/stages/dev",
+                "subsegments": [
+                    {
+                        "id": "203de8fb4b0a5589",
+                        "name": "STEPFUNCTIONS",
+                        "start_time": 1639806385.317,
+                        "end_time": 1639806385.402,
+                        "http": {
+                            "request": {
+                                "url": "https://states.us-east-1.amazonaws.com/?Action=StartExecution",
+                                "method": "POST"
+                            },
+                            "response": {
+                                "status": 200,
+                                "content_length": 177
+                            }
+                        },
+                        "aws": {
+                            "region": "us-east-1"
+                        },
+                        "namespace": "aws"
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "4efe077c448b9d25",
+            "Document": {
+                "id": "4efe077c448b9d25",
+                "name": "matrix-mul-dev-create_matrix",
+                "start_time": 1639806385.4672265,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.5381985,
+                "parent_id": "689daf05902f4f8b",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-create_matrix",
+                    "resource_names": [
+                        "matrix-mul-dev-create_matrix"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "cd07f4d29f2e5080",
+                        "name": "Invocation",
+                        "start_time": 1639806385.467279,
+                        "end_time": 1639806385.5378807,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-create_matrix"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "2c8ed5bdb18052ce",
+                                "name": "S3",
+                                "start_time": 1639806385.469492,
+                                "end_time": 1639806385.537131,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "91KNFEAVA94H24T6",
+                                    "operation": "PutObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "69VtOsaj6sIzqxlRddMmEJyUPopntjNAjknEKlZlfgBISJ3ziIgG7VuHlRVhrQqa55ywC1GyjeU=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "63d451bd97e3bf58",
+                        "name": "Overhead",
+                        "start_time": 1639806385.5379357,
+                        "end_time": 1639806385.53816,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-create_matrix"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "452fb265548d3101",
+            "Document": {
+                "id": "452fb265548d3101",
+                "name": "matrix-mul-dev-parallel_mul_scheduler",
+                "start_time": 1639806385.5723863,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.7994902,
+                "parent_id": "7f161e31824cd192",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-parallel_mul_scheduler",
+                    "resource_names": [
+                        "matrix-mul-dev-parallel_mul_scheduler"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "d3373bcd526bdb6a",
+                        "name": "Invocation",
+                        "start_time": 1639806385.5724418,
+                        "end_time": 1639806385.7991958,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-parallel_mul_scheduler"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "d7d6f3d416c296b1",
+                                "name": "S3",
+                                "start_time": 1639806385.572953,
+                                "end_time": 1639806385.626634,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 14729
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "version_id": null,
+                                    "region": "us-east-1",
+                                    "request_id": "91KM52A4KX5EZVF3",
+                                    "operation": "GetObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                                    "id_2": "cIvR/SsWPu/XYs8dBTpamrwLhCnsAv8ikYKgSuhNeM5QAv6+fsowB0obO732EYZbG0Zpw3Oq/7U=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "34a7f7854fbe0f0d",
+                                "name": "S3",
+                                "start_time": 1639806385.630036,
+                                "end_time": 1639806385.682388,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "91KKT0W8WGG71NNC",
+                                    "operation": "PutObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_0",
+                                    "id_2": "qQMF3vLBYEi/+eGdP1kBRpnmmGxAOJhqxfqY8q8sAnbXfvFq/J4khzS+pA3kx09SPiZfeO1LtKg=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "ed0621d712719c9d",
+                                "name": "S3",
+                                "start_time": 1639806385.683532,
+                                "end_time": 1639806385.709231,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "91KKZ5KRK2CT9B13",
+                                    "operation": "PutObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_1",
+                                    "id_2": "lr59GcnzHeDu9pKBgZdr2+3piTUNKYDkEruGAo1A3UmHOYFDnVkCSQq6wmFPUBiJqfW1o82i5gI=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "9bed5db1610a0e19",
+                                "name": "S3",
+                                "start_time": 1639806385.710379,
+                                "end_time": 1639806385.737095,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "91KSNG4T2T9XEE3C",
+                                    "operation": "PutObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_2",
+                                    "id_2": "pf2KwPdtf7aGFnGLRIwOXr2qZsH6pwbgDArRO99l/TWrCNV7G9hsGXxWIS4EAyj4VhoSgnGsrys=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "8d6b75a155cfaac3",
+                                "name": "S3",
+                                "start_time": 1639806385.738231,
+                                "end_time": 1639806385.765806,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "91KKQ5Z9058BT8WF",
+                                    "operation": "PutObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_3",
+                                    "id_2": "va0rAdz6ebC2QFtVrs3FIWtIYMrzWHWp0ySoV5xZ0IKADksD0WYiopEA/P8VhOGs+Dlw2klXuqo=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            },
+                            {
+                                "id": "c7401134ae0dcde3",
+                                "name": "S3",
+                                "start_time": 1639806385.767026,
+                                "end_time": 1639806385.797898,
+                                "http": {
+                                    "response": {
+                                        "status": 200,
+                                        "content_length": 0
+                                    }
+                                },
+                                "aws": {
+                                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                                    "region": "us-east-1",
+                                    "request_id": "91KJ9HPBFPXMJV3J",
+                                    "operation": "PutObject",
+                                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_4",
+                                    "id_2": "vtuRnoEhcwfCldqXGoM+cJHruQN6/v5gmKQxz1DuShYx4+Nw1xG2JxkZkfRsv0rFi2ojqIIvnYI=",
+                                    "resource_names": [
+                                        "matrix-multiplication-data-sb-8791"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "c15ea6933a82293b",
+                        "name": "Overhead",
+                        "start_time": 1639806385.799263,
+                        "end_time": 1639806385.7994552,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:matrix-mul-dev-parallel_mul_scheduler"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "3c9a1dbe21f045d5",
+            "Document": {
+                "id": "3c9a1dbe21f045d5",
+                "name": "S3",
+                "start_time": 1639806385.930872,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.963275,
+                "parent_id": "fca9c3c67473467d",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "operation": "PutObject",
+                    "request_id": "91KZZ9KGGS53P35T",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_0",
+                    "id_2": "whYET7aETnabP8di/pABsJyEOQXcbNLACdpRBRQhejYGDUmI2rYDjOzfzSDVE+es0a72nDvGgx0=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "0ba8bdf612f2c0e7",
+            "Document": {
+                "id": "0ba8bdf612f2c0e7",
+                "name": "S3",
+                "start_time": 1639806385.87921,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.92733,
+                "parent_id": "65b993a6f6ae4d20",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KT0QZ95QH9PN8T",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "GGzmvn1+4NE+cy4w5ZZUXXmdK9VYkqPXtjpWNvTyToOoMBM7WJhhpGNBSUc/wHGiia52aeKkha8=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "37dc661523721287",
+            "Document": {
+                "id": "37dc661523721287",
+                "name": "S3",
+                "start_time": 1639806385.83399,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.877614,
+                "parent_id": "4e5190020eb3fb06",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 7801
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KZYCBGA27SFNRB",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_0",
+                    "id_2": "yNDJQp2mXJf2GH4DfhHQg14VWklIGKqcoKb3tHRdT8M12KFpuamXXVBvdroE4v4+MBBXRWUvnec=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "036e49da1a153325",
+            "Document": {
+                "id": "036e49da1a153325",
+                "name": "S3",
+                "start_time": 1639806385.887391,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.92556,
+                "parent_id": "308b2c351c6532b4",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "request_id": "91KTH30ZH0HRCGVR",
+                    "operation": "GetObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "6hbZPBkWUTEk2JwzxwjCoiSgD9KvrKlT4y/Z3IbmZMq99KDkymqON+pmneVtS+dqxwDygS3p71s=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "30feafc401b56180",
+            "Document": {
+                "id": "30feafc401b56180",
+                "name": "S3",
+                "start_time": 1639806385.929266,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.984823,
+                "parent_id": "a724a67dced00af8",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "91KGA31WGDRNPMV9",
+                    "operation": "PutObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_4",
+                    "id_2": "DoaruAqfrigd8rbEOvPfW8MnUp7N9pvGPk2KfBV7JiiVHFz6fw0RUBZ/jfr3xzH3bKcSfOOe5F4=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "363004ea3fd8ce47",
+            "Document": {
+                "id": "363004ea3fd8ce47",
+                "name": "S3",
+                "start_time": 1639806385.830402,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.885822,
+                "parent_id": "c5930b03622321de",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 7801
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "request_id": "91KXXKG6CE421EEH",
+                    "operation": "GetObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_4",
+                    "id_2": "Nra9jkqUWY6iLvqVL89QnYRSFCy7BY4ABQY+cCndiUGoVBF+O3zaNSQ3X+JzS8lYDIydBqHV74M=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "2265abdc015a4b13",
+            "Document": {
+                "id": "2265abdc015a4b13",
+                "name": "S3",
+                "start_time": 1639806385.83685,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.897053,
+                "parent_id": "e487c736ce2f1b24",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 7801
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KKVGWPY3D0Q6XC",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_1",
+                    "id_2": "jaWrc2w+0LWU+EyoR4mux8f5iIKiOF5ITOzgZ9FoMPIAmATgQ7ssSeAPyoJ/TITAlD/ANH9tj24=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "37e964042d00b447",
+            "Document": {
+                "id": "37e964042d00b447",
+                "name": "S3",
+                "start_time": 1639806385.946115,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.973836,
+                "parent_id": "82cd4f7cf9551372",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "operation": "PutObject",
+                    "request_id": "91KK6FDKDR1HGW9T",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_1",
+                    "id_2": "lKMdJ5C4lpV6Se8XHmZcUbwR0tN3ZSjXqAuc9dwpgDM9Kz4PURnyteLcGeNDSWhZ/JNhbpcBuBU=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "3f6c139723d41e80",
+            "Document": {
+                "id": "3f6c139723d41e80",
+                "name": "S3",
+                "start_time": 1639806385.898479,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.942628,
+                "parent_id": "c49b0e10d636619b",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KS13CNP6N04HEV",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "WFtr64SGENwl345ijpdoBoiFSBD+QK1GhonptnSVt0TfRqQ0dSy7GVefgMPyTaq++2Uc4bQdn9w=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "3cc4eec63454ba11",
+            "Document": {
+                "id": "3cc4eec63454ba11",
+                "name": "S3",
+                "start_time": 1639806386.542199,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.62527,
+                "parent_id": "1324d4cd59b8c725",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W4108K68HYAFRCB",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_0",
+                    "id_2": "jiFSokRqBO5Eh+N9foVBEHh0SDYRzJVW8SOM/nLlIkG8Hc6UPsmgYbm0+e0IMNABR5ZeZN/PoQQ=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "0df0ac9233cee94d",
+            "Document": {
+                "id": "0df0ac9233cee94d",
+                "name": "S3",
+                "start_time": 1639806386.521714,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.541874,
+                "parent_id": "d76404df568771b4",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W433MSQ1PXA4D29",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_0",
+                    "id_2": "Ln7yV98tBd6ZbeRcopOraEjeRcdN9ZYLvrqTolTGT09anLBpa9Fm00HyOX1wQ2cJkE3doH/70FQ=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "1721122d06dd449e",
+            "Document": {
+                "id": "1721122d06dd449e",
+                "name": "S3",
+                "start_time": 1639806386.503535,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.521337,
+                "parent_id": "ab02d381c59f7f1a",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W48THKRKQC4WC18",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_result",
+                    "id_2": "0WJWTPZNQAdKkxeId0qMzBLx2yLIj+aT0NpboECRS/YUnoctchRA3JDA6DQphm2wklR0767vqwQ=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "31db390c3cb0ecad",
+            "Document": {
+                "id": "31db390c3cb0ecad",
+                "name": "S3",
+                "start_time": 1639806386.860874,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.880031,
+                "parent_id": "93d3ff94324e10ab",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W4D2QRB60VJM013",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_4",
+                    "id_2": "a+jQzIvPHZrpwk7FbrjDZ7ArT2rvsW/2r/6HOHZ/rpK+pdQ/kK46YUNQ3BVUBUxuSocve1NIiGA=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "34a05b1323346cf4",
+            "Document": {
+                "id": "34a05b1323346cf4",
+                "name": "S3",
+                "start_time": 1639806386.724379,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.744695,
+                "parent_id": "2530c5a56dbc631e",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W40BHDG52M1HMTR",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_1",
+                    "id_2": "FQ80FWB3xvx7EyYLy06xG3Ay9uzLzKxBZy5w+rqnSK0V9PkETWOoR+Eyehto9PaXhsq+tJWz0+8=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "00ec458d3edba65b",
+            "Document": {
+                "id": "00ec458d3edba65b",
+                "name": "S3",
+                "start_time": 1639806386.819113,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.840317,
+                "parent_id": "3adac5009a616fa0",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W4238RT0KWMSQW9",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_3",
+                    "id_2": "GdI4Gm7ov7l/R9k2Mfbwbd87lSG0ABiYYPCWHp4tcrmsieGqEds6scQXBYcrWXtbKbtDVvUjP/4=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "3557a9ae39f3fae0",
+            "Document": {
+                "id": "3557a9ae39f3fae0",
+                "name": "S3",
+                "start_time": 1639806386.247482,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.306403,
+                "parent_id": "8c483c8ab7a40e14",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "request_id": "0W40HCXEK2PZ534V",
+                    "operation": "GetObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "zur18uAmR7XDCj9a8nVavgIB2/hHA9EQyVM0hnpcO6q6QiZUEB8w9Y2m1aVEc526t3/2S3oahy8=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "06e041e901c86b96",
+            "Document": {
+                "id": "06e041e901c86b96",
+                "name": "S3",
+                "start_time": 1639806386.840745,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.860503,
+                "parent_id": "9040f0ba02456ac2",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W48GY0GE1GVM1T2",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_3",
+                    "id_2": "Wm1oaR4S/KNSmhEIuvUF+nHhyamvQ8771y4N+62bpOcE2eMN80jEnzPPbNRA4Bzns/iv0qTO3UY=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "0b4880e32ef1363a",
+            "Document": {
+                "id": "0b4880e32ef1363a",
+                "name": "S3",
+                "start_time": 1639806386.764786,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.818691,
+                "parent_id": "0d4d249f044687cd",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W40JP7D8G33P0T2",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_2",
+                    "id_2": "7AffLgY58RYBOqJwzT8jrXbIAyOXinZEqTLOynJ6o8bLAUqJFGVuMV/0Zb0jAIAgL0EIf9FiyWo=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "27e419a9275f9ea9",
+            "Document": {
+                "id": "27e419a9275f9ea9",
+                "name": "S3",
+                "start_time": 1639806386.880382,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.900628,
+                "parent_id": "2059de385d6266f5",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W43EB3C1RJBY65Z",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_4",
+                    "id_2": "PI3wjbzkD2gAnTv0Nys+dgKw2xLAYZYk8E09xw/ywiGRezTpb5HPXf8PWVGXro7RzeVVK7U8pXE=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "03c9b3cc30479157",
+            "Document": {
+                "id": "03c9b3cc30479157",
+                "name": "S3",
+                "start_time": 1639806386.745168,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.764346,
+                "parent_id": "09d4ace8c385eeae",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W4AM3VSCDWNY34Z",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_2",
+                    "id_2": "Yok0in81wav3fSrVKl78WIZ/X3xlE9d4GyU25/1akJ4ZhKeqdYmmHa/oJbVitdOqn2tgpkXCvno=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "28f096912c3ed089",
+            "Document": {
+                "id": "28f096912c3ed089",
+                "name": "S3",
+                "start_time": 1639806386.625578,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.723272,
+                "parent_id": "8ae7ee9a4e654d24",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W44XRMFD0576H0C",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_1",
+                    "id_2": "SAx1Opa8XmTQySSbtkS0Bm6rgYcxZn/cami8xX0iNq6PF5I3It/ZPGDxRAnrgBKJ2hkOL2Tyfn8=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "2fc9549d2715bba2",
+            "Document": {
+                "id": "2fc9549d2715bba2",
+                "name": "S3",
+                "start_time": 1639806386.308734,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.416294,
+                "parent_id": "0092b99c8d20b3a8",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 17499
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "request_id": "0W46BCGG883ZPT7W",
+                    "operation": "GetObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_result",
+                    "id_2": "qSlBnWn2zem25FYoMjmAl7SbAU2tg31LzxsSLZP7z+qmfums+Wlxv4O37RLFDU4snIEleJfyQNc=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "275fc99d05442364",
+            "Document": {
+                "id": "275fc99d05442364",
+                "name": "S3",
+                "start_time": 1639806386.418046,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.503079,
+                "parent_id": "c57272658f3da1b6",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 204,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "0W4CFKK97XDQPZSZ",
+                    "operation": "DeleteObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "22KegyeHXzes9cxCO69581pNwOFcIZ6wdIjA7mq1L+3IfjctMpqLDylIqCCu+9kTFYUAmocSkIw=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "37a6a2e70aa10162",
+            "Document": {
+                "id": "37a6a2e70aa10162",
+                "name": "S3",
+                "start_time": 1639806385.872611,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.90876,
+                "parent_id": "2aa633320965af50",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KQBXDBTEQ1HFJA",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "xmw8TjK/LDePxqCaHWtTKsxXps8aU0IbE+a+5s593wx5vXniSNChhDwZgWiqyeGMHvufsb0BzEM=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "34449c721835a62d",
+            "Document": {
+                "id": "34449c721835a62d",
+                "name": "S3",
+                "start_time": 1639806385.912066,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.978984,
+                "parent_id": "16a0c19487d3b03a",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "operation": "PutObject",
+                    "request_id": "91KV8GC7J3ZJMW58",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_3",
+                    "id_2": "yCfiygsp23vgkphnxdHkXrTbNrBmO1Fd5LesHhFYBsRdDpr7hxndqFns8JTNp/EqIVVRSUcZltQ=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "3a72ced11ef9578f",
+            "Document": {
+                "id": "3a72ced11ef9578f",
+                "name": "S3",
+                "start_time": 1639806385.827366,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.871092,
+                "parent_id": "6149493304eee891",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 7801
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KPEZE6CT2R2Y3R",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_3",
+                    "id_2": "dKgtZlR0B8GzyBqns2VRuRpushL97k+T4suCzt642OtQW4BRy+eKgsKcW3f52aJvA0tbsd1HpqE=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "1dc496d1022e8919",
+            "Document": {
+                "id": "1dc496d1022e8919",
+                "name": "S3",
+                "start_time": 1639806385.940406,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.969847,
+                "parent_id": "80857cd5c255f49b",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "operation": "PutObject",
+                    "request_id": "91KXPF0T7PWF34E2",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_2",
+                    "id_2": "hTZDCC7KOa5qLCXPcqwTCuXf8UCXhjfnx79F5f68XahBSKiC27bVUaxkEDNqNBfbeRf/Fz+oW5w=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "10727018028c8c56",
+            "Document": {
+                "id": "10727018028c8c56",
+                "name": "S3",
+                "start_time": 1639806385.83213,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.893989,
+                "parent_id": "6a1765b1e67ab1e6",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 7801
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KYZQV4VX2SVGSX",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_2",
+                    "id_2": "Ff6SJHfsiDLf73gORxW0UyOrvc/nJtWaORXzw6ux5dgZVj/IMdjwN9fIoBic9oVCyoDLRv3cnX0=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "1b7c90e32a4a81e8",
+            "Document": {
+                "id": "1b7c90e32a4a81e8",
+                "name": "S3",
+                "start_time": 1639806385.895587,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.936639,
+                "parent_id": "b73e4b6f46ce79ef",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "91KS73475MV6YT18",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "cd9JBIKUYymnRBex3SQ3cl/+yafaidtu5U/eW3L9iKAld0fI8uwEnkKouxHymA5GYpJ0DptTWA4=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "3e8ddda00860d15b",
+            "Document": {
+                "id": "3e8ddda00860d15b",
+                "name": "S3",
+                "start_time": 1639806386.192398,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.224663,
+                "parent_id": "f3669bee9a36ca3c",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "operation": "PutObject",
+                    "request_id": "0W447S4J5K6MC1WB",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_result",
+                    "id_2": "TuwWhkMFzQKQV/umaHKydCpNyffrgVrc1rkpJD/4SksmLcUGUifuzJVwo/VkOsBh1VN5stKcT7k=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "1502e64833555318",
+            "Document": {
+                "id": "1502e64833555318",
+                "name": "S3",
+                "start_time": 1639806386.153987,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.16983,
+                "parent_id": "3d49c1e71f0e9e21",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 15770
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "0W46CYGJZMD5X9SV",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_3",
+                    "id_2": "n+fzIvlioXNYaA3h5CiLoeQa7Me5wazQYZYDrUlNPbIx6zxzccF5kNUeYw9gBXSU+fOcBMMI57k=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "34549fda0960a0e1",
+            "Document": {
+                "id": "34549fda0960a0e1",
+                "name": "S3",
+                "start_time": 1639806386.171817,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.189405,
+                "parent_id": "efe9bc1a237955ef",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 15781
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "0W4BWQTFCSE29YZD",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_4",
+                    "id_2": "1IUr9rvin6qWaYYT8MIoqrUPCyNXyMlviMipup9Gc3Zp5xCgG2wS2tT3a+sd8PQ5635Gkm3oi78=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "0d4f4c8d29018aa8",
+            "Document": {
+                "id": "0d4f4c8d29018aa8",
+                "name": "S3",
+                "start_time": 1639806386.071787,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.110231,
+                "parent_id": "4a57946d830a25c7",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 15786
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "0W4CHY1Z0G9848M8",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_0",
+                    "id_2": "7wR1B/4ZmrgppA7wQG3ptjZ0p+NxLPWXizyR0Q2cJpAvCP71kib6ds76/6WmuiSQKX4BECjZGvg=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "2c692d493d724692",
+            "Document": {
+                "id": "2c692d493d724692",
+                "name": "S3",
+                "start_time": 1639806386.134596,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.15202,
+                "parent_id": "4a1981fca3c5d46c",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 15772
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "0W45SBBC5RZM8XCE",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_2",
+                    "id_2": "vR37L5zjbQ40I5oVyi9X7FDxaftDyZ7OwMw0L4Y1zijxLFZtDgmaJpUUACXfgFavWrQ/ZPgoJGU=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "0137e0652944835b",
+            "Document": {
+                "id": "0137e0652944835b",
+                "name": "S3",
+                "start_time": 1639806386.112274,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.132669,
+                "parent_id": "b535654b6c281f65",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 15775
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "0W46XAVTE4JNVR1V",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_results_worker_1",
+                    "id_2": "qOUP4cbRddW2bWlUm5eHPXRl4JydFnmK0+A8db7fdPnWN5vi7t9Pea3OKuETEge04CaspBSpAOA=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "3a22aafd2fe1f64f",
+            "Document": {
+                "id": "3a22aafd2fe1f64f",
+                "name": "S3",
+                "start_time": 1639806386.011896,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806386.069631,
+                "parent_id": "768b886040f56f62",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "operation": "GetObject",
+                    "request_id": "0W4CQNZE1XE0V68T",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "K+BMliWjwVF5Uv/e5uamG7RgwkPu26eKUoJZ93ZDqDf2cRLUclkX8w6gDo4Z2MomSz0r/uQx2hA=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "26a8774a283a70ea",
+            "Document": {
+                "id": "26a8774a283a70ea",
+                "name": "S3",
+                "start_time": 1639806385.469492,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.537131,
+                "parent_id": "2c8ed5bdb18052ce",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "91KNFEAVA94H24T6",
+                    "operation": "PutObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "69VtOsaj6sIzqxlRddMmEJyUPopntjNAjknEKlZlfgBISJ3ziIgG7VuHlRVhrQqa55ywC1GyjeU=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "3d9ddd070f924097",
+            "Document": {
+                "id": "3d9ddd070f924097",
+                "name": "S3",
+                "start_time": 1639806385.767026,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.797898,
+                "parent_id": "c7401134ae0dcde3",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "91KJ9HPBFPXMJV3J",
+                    "operation": "PutObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_4",
+                    "id_2": "vtuRnoEhcwfCldqXGoM+cJHruQN6/v5gmKQxz1DuShYx4+Nw1xG2JxkZkfRsv0rFi2ojqIIvnYI=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "236981341df230b2",
+            "Document": {
+                "id": "236981341df230b2",
+                "name": "S3",
+                "start_time": 1639806385.738231,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.765806,
+                "parent_id": "8d6b75a155cfaac3",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "91KKQ5Z9058BT8WF",
+                    "operation": "PutObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_3",
+                    "id_2": "va0rAdz6ebC2QFtVrs3FIWtIYMrzWHWp0ySoV5xZ0IKADksD0WYiopEA/P8VhOGs+Dlw2klXuqo=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "1b51d11812229ca4",
+            "Document": {
+                "id": "1b51d11812229ca4",
+                "name": "S3",
+                "start_time": 1639806385.710379,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.737095,
+                "parent_id": "9bed5db1610a0e19",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "91KSNG4T2T9XEE3C",
+                    "operation": "PutObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_2",
+                    "id_2": "pf2KwPdtf7aGFnGLRIwOXr2qZsH6pwbgDArRO99l/TWrCNV7G9hsGXxWIS4EAyj4VhoSgnGsrys=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "0fd547f700117aa2",
+            "Document": {
+                "id": "0fd547f700117aa2",
+                "name": "S3",
+                "start_time": 1639806385.630036,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.682388,
+                "parent_id": "34a7f7854fbe0f0d",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "91KKT0W8WGG71NNC",
+                    "operation": "PutObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_0",
+                    "id_2": "qQMF3vLBYEi/+eGdP1kBRpnmmGxAOJhqxfqY8q8sAnbXfvFq/J4khzS+pA3kx09SPiZfeO1LtKg=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "14336f663dbef3ef",
+            "Document": {
+                "id": "14336f663dbef3ef",
+                "name": "S3",
+                "start_time": 1639806385.683532,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.709231,
+                "parent_id": "ed0621d712719c9d",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "region": "us-east-1",
+                    "request_id": "91KKZ5KRK2CT9B13",
+                    "operation": "PutObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1_tasks_worker_1",
+                    "id_2": "lr59GcnzHeDu9pKBgZdr2+3piTUNKYDkEruGAo1A3UmHOYFDnVkCSQq6wmFPUBiJqfW1o82i5gI=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "0e328fa93e08b29f",
+            "Document": {
+                "id": "0e328fa93e08b29f",
+                "name": "S3",
+                "start_time": 1639806385.572953,
+                "trace_id": "1-61bd75b1-6ef5c6f8ec5c4d9022d6e616",
+                "end_time": 1639806385.626634,
+                "parent_id": "d7d6f3d416c296b1",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 14729
+                    }
+                },
+                "aws": {
+                    "bucket_name": "matrix-multiplication-data-sb-8791",
+                    "version_id": null,
+                    "region": "us-east-1",
+                    "request_id": "91KM52A4KX5EZVF3",
+                    "operation": "GetObject",
+                    "key": "db3cafe7-b455-4ea2-a7f3-befa70faa7e1",
+                    "id_2": "cIvR/SsWPu/XYs8dBTpamrwLhCnsAv8ikYKgSuhNeM5QAv6+fsowB0obO732EYZbG0Zpw3Oq/7U=",
+                    "resource_names": [
+                        "matrix-multiplication-data-sb-8791"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        }
+    ]
+}

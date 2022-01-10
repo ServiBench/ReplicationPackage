@@ -1,0 +1,27 @@
+{
+    "Id": "1-608b9760-b03a65c995768cb0af637b65",
+    "Duration": 0.018,
+    "LimitExceeded": false,
+    "Segments": [
+        {
+            "Id": "11b837741292c78c",
+            "Document": "{\"id\":\"11b837741292c78c\",\"name\":\"event-processing-dev-event_inserter\",\"start_time\":1.619760992026483E9,\"trace_id\":\"1-608b9760-b03a65c995768cb0af637b65\",\"end_time\":1.6197609920374403E9,\"parent_id\":\"543bc48190a9648e\",\"aws\":{\"account_id\":\"123456789012\",\"function_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:event-processing-dev-event_inserter\",\"resource_names\":[\"event-processing-dev-event_inserter\"]},\"origin\":\"AWS::Lambda::Function\",\"subsegments\":[{\"id\":\"0dcf33568b312560\",\"name\":\"Overhead\",\"start_time\":1.6197609920371518E9,\"end_time\":1.6197609920373943E9,\"aws\":{\"function_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:event-processing-dev-event_inserter\"}},{\"id\":\"30c76b0bf9dd7a72\",\"name\":\"Invocation\",\"start_time\":1.6197609920265253E9,\"end_time\":1.619760992037126E9,\"aws\":{\"function_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:event-processing-dev-event_inserter\"},\"subsegments\":[{\"id\":\"9c1174ece28227da\",\"name\":\"auroradev@event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com\",\"start_time\":1.619760992034E9,\"end_time\":1.619760992036E9,\"sql\":{\"url\":\"event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com:3306/auroradev\",\"user\":\"master\",\"preparation\":\"statement\"},\"namespace\":\"remote\"},{\"id\":\"69e4016884542eea\",\"name\":\"auroradev@event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com\",\"start_time\":1.619760992029E9,\"end_time\":1.619760992034E9,\"sql\":{\"url\":\"event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com:3306/auroradev\",\"user\":\"master\",\"preparation\":\"statement\"},\"namespace\":\"remote\"},{\"id\":\"28b0c8252bab7831\",\"name\":\"annotations\",\"start_time\":1.619760992029E9,\"end_time\":1.619760992029E9,\"annotations\":{\"root_trace_id\":\"1-608b975f-82c9cf3915cf8d7c1093ada7\"}},{\"id\":\"025db6a9b73c96e1\",\"name\":\"auroradev@event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com\",\"start_time\":1.619760992027E9,\"end_time\":1.619760992028E9,\"sql\":{\"url\":\"event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com:3306/auroradev\",\"user\":\"master\"},\"namespace\":\"remote\"}]}]}"
+        },
+        {
+            "Id": "543bc48190a9648e",
+            "Document": "{\"id\":\"543bc48190a9648e\",\"name\":\"event-processing-dev-event_inserter\",\"start_time\":1.619760992021E9,\"trace_id\":\"1-608b9760-b03a65c995768cb0af637b65\",\"end_time\":1.619760992039E9,\"http\":{\"response\":{\"status\":200}},\"aws\":{\"request_id\":\"3171265e-c749-5d70-bae8-7f5b5ed79bbc\"},\"origin\":\"AWS::Lambda\",\"resource_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:event-processing-dev-event_inserter\"}"
+        },
+        {
+            "Id": "1ffe131431b700dc",
+            "Document": "{\"id\":\"1ffe131431b700dc\",\"name\":\"auroradev@event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com\",\"start_time\":1.619760992027E9,\"trace_id\":\"1-608b9760-b03a65c995768cb0af637b65\",\"end_time\":1.619760992028E9,\"parent_id\":\"025db6a9b73c96e1\",\"inferred\":true,\"sql\":{\"url\":\"event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com:3306/auroradev\",\"user\":\"master\"},\"origin\":\"Database::SQL\"}"
+        },
+        {
+            "Id": "3934c9042143d984",
+            "Document": "{\"id\":\"3934c9042143d984\",\"name\":\"auroradev@event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com\",\"start_time\":1.619760992029E9,\"trace_id\":\"1-608b9760-b03a65c995768cb0af637b65\",\"end_time\":1.619760992034E9,\"parent_id\":\"69e4016884542eea\",\"inferred\":true,\"sql\":{\"url\":\"event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com:3306/auroradev\",\"user\":\"master\",\"preparation\":\"statement\"},\"origin\":\"Database::SQL\"}"
+        },
+        {
+            "Id": "358ac8f6235234e1",
+            "Document": "{\"id\":\"358ac8f6235234e1\",\"name\":\"auroradev@event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com\",\"start_time\":1.619760992034E9,\"trace_id\":\"1-608b9760-b03a65c995768cb0af637b65\",\"end_time\":1.619760992036E9,\"parent_id\":\"9c1174ece28227da\",\"inferred\":true,\"sql\":{\"url\":\"event-processing-dev-aurorardscluster-tjk7vd0bwe6y.cluster-cxvrxjtpwvp8.eu-west-1.rds.amazonaws.com:3306/auroradev\",\"user\":\"master\",\"preparation\":\"statement\"},\"origin\":\"Database::SQL\"}"
+        }
+    ]
+}

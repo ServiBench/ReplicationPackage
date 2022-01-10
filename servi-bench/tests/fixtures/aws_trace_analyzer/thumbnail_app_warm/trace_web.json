@@ -1,0 +1,345 @@
+{
+    "Id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+    "Duration": 8.381,
+    "LimitExceeded": false,
+    "Segments": [
+        {
+            "Id": "2f4bd32319f701b8",
+            "Document": {
+                "id": "2f4bd32319f701b8",
+                "name": "thumbnail-generator-prod-upload",
+                "start_time": 1615455019.072,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455019.14,
+                "parent_id": "741cdf1347fef68e",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:thumbnail-generator-prod-upload",
+                    "resource_names": [
+                        "thumbnail-generator-prod-upload"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "65564e31df7554ff",
+                        "name": "S3",
+                        "start_time": 1615455019.076,
+                        "end_time": 1615455019.139,
+                        "http": {
+                            "response": {
+                                "status": 200,
+                                "content_length": 0
+                            }
+                        },
+                        "aws": {
+                            "bucket_name": "thumbgen-images-sb-3299",
+                            "operation": "PutObject",
+                            "request_id": "NZDW2AMSRC80VP0D",
+                            "key": "img.png",
+                            "id_2": "1t3igKXiUfT6j99fuBHYZIM0bNNBi6yLa8hhDfPehV/b51cI7d5NYmAaTpuxGld3m/6Q4g56I14=",
+                            "resource_names": [
+                                "thumbgen-images-sb-3299"
+                            ]
+                        },
+                        "namespace": "aws"
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "1a20bdf3143c893f",
+            "Document": {
+                "id": "1a20bdf3143c893f",
+                "name": "thumbnail-generator-prod-thumbnail-generator",
+                "start_time": 1615455021.635,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455027.415,
+                "parent_id": "389cf212239f9c3d",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:thumbnail-generator-prod-thumbnail-generator",
+                    "resource_names": [
+                        "thumbnail-generator-prod-thumbnail-generator"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "4243b3f30b1a31bc",
+                        "name": "Initialization",
+                        "start_time": 1615455020.604,
+                        "end_time": 1615455021.633,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:thumbnail-generator-prod-thumbnail-generator"
+                        }
+                    },
+                    {
+                        "id": "272f64610826d9a3",
+                        "name": "S3",
+                        "start_time": 1615455025.094,
+                        "end_time": 1615455026.388,
+                        "http": {
+                            "response": {
+                                "status": 200,
+                                "content_length": 71872
+                            }
+                        },
+                        "aws": {
+                            "bucket_name": "thumbgen-images-sb-3299",
+                            "operation": "GetObject",
+                            "request_id": "KYW26DZH61YGK38T",
+                            "key": "img.png",
+                            "id_2": "Qb/SA1QOu2Z7Mp8pmlAsOe/ye06jynIh/euf30caOQsfibqNMudWGYLMQQBKoEQn7esIBG/ImzA=",
+                            "resource_names": [
+                                "thumbgen-images-sb-3299"
+                            ]
+                        },
+                        "namespace": "aws"
+                    },
+                    {
+                        "id": "29a2ab83154dacbc",
+                        "name": "S3",
+                        "start_time": 1615455027.049,
+                        "end_time": 1615455027.229,
+                        "http": {
+                            "response": {
+                                "status": 200,
+                                "content_length": 0
+                            }
+                        },
+                        "aws": {
+                            "bucket_name": "thumbgen-thumbnails-sb-3299",
+                            "operation": "PutObject",
+                            "request_id": "HHSZ0RDVGXD6DBQC",
+                            "key": "resized-img.png",
+                            "id_2": "Qovjl4OHhNe/m0Dz0NLh5OMlaGP16cg0+z4pd6j2e8nOWC3dJrL3TzHLYUEJI5uiJwCOf6BDyvE=",
+                            "resource_names": [
+                                "thumbgen-thumbnails-sb-3299"
+                            ]
+                        },
+                        "namespace": "aws"
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "1c0daa04e45b8aaf",
+            "Document": {
+                "id": "1c0daa04e45b8aaf",
+                "name": "prod-thumbnail-generator/prod",
+                "start_time": 1615455019.055,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455019.143,
+                "http": {
+                    "request": {
+                        "url": "https://d574arqmjg.execute-api.us-east-1.amazonaws.com/prod/upload",
+                        "method": "POST",
+                        "user_agent": "k6/0.30.0 (https://k6.io/)",
+                        "client_ip": "83.187.186.136",
+                        "x_forwarded_for": true
+                    },
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "api_gateway": {
+                        "account_id": "123456789012",
+                        "rest_api_id": "d574arqmjg",
+                        "stage": "prod",
+                        "request_id": "2851907c-ce34-4469-9ebc-c412a035fb01"
+                    }
+                },
+                "annotations": {
+                    "aws:api_id": "d574arqmjg",
+                    "aws:api_stage": "prod"
+                },
+                "metadata": {
+                    "default": {
+                        "extended_request_id": "cBBuvH19oAMF7QA=",
+                        "request_id": "2851907c-ce34-4469-9ebc-c412a035fb01"
+                    }
+                },
+                "origin": "AWS::ApiGateway::Stage",
+                "resource_arn": "arn:aws:apigateway:us-east-1::/restapis/d574arqmjg/stages/prod",
+                "subsegments": [
+                    {
+                        "id": "4694d1fbd1265f0b",
+                        "name": "Lambda",
+                        "start_time": 1615455019.058,
+                        "end_time": 1615455019.1420002,
+                        "http": {
+                            "request": {
+                                "url": "https://lambda.us-east-1.amazonaws.com/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:thumbnail-generator-prod-upload/invocations",
+                                "method": "POST"
+                            },
+                            "response": {
+                                "status": 200,
+                                "content_length": 32
+                            }
+                        },
+                        "aws": {
+                            "function_name": "thumbnail-generator-prod-upload",
+                            "region": "us-east-1",
+                            "operation": "Invoke",
+                            "resource_names": [
+                                "thumbnail-generator-prod-upload"
+                            ]
+                        },
+                        "namespace": "aws"
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "741cdf1347fef68e",
+            "Document": {
+                "id": "741cdf1347fef68e",
+                "name": "thumbnail-generator-prod-upload",
+                "start_time": 1615455019.064,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455019.141,
+                "parent_id": "4694d1fbd1265f0b",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "f27b21b7-0045-4d56-b1ad-887312ae258b"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:thumbnail-generator-prod-upload"
+            }
+        },
+        {
+            "Id": "4500f44ffce10cd2",
+            "Document": {
+                "id": "4500f44ffce10cd2",
+                "name": "thumbnail-generator-prod-thumbnail-generator",
+                "start_time": 1615455020.183,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455020.23,
+                "parent_id": "65564e31df7554ff",
+                "http": {
+                    "response": {
+                        "status": 202
+                    }
+                },
+                "aws": {
+                    "request_id": "03d496e0-a277-4e1b-ba28-688e8deba76b"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:thumbnail-generator-prod-thumbnail-generator",
+                "subsegments": [
+                    {
+                        "id": "3ec5a5ebf633265a",
+                        "name": "Dwell Time",
+                        "start_time": 1615455020.183,
+                        "end_time": 1615455020.259
+                    },
+                    {
+                        "id": "389cf212239f9c3d",
+                        "name": "Attempt #1",
+                        "start_time": 1615455020.259,
+                        "end_time": 1615455027.436,
+                        "http": {
+                            "response": {
+                                "status": 200
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "0793688f0fced909",
+            "Document": {
+                "id": "0793688f0fced909",
+                "name": "S3",
+                "start_time": 1615455019.076,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455019.139,
+                "parent_id": "65564e31df7554ff",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "thumbgen-images-sb-3299",
+                    "operation": "PutObject",
+                    "request_id": "NZDW2AMSRC80VP0D",
+                    "key": "img.png",
+                    "id_2": "1t3igKXiUfT6j99fuBHYZIM0bNNBi6yLa8hhDfPehV/b51cI7d5NYmAaTpuxGld3m/6Q4g56I14=",
+                    "resource_names": [
+                        "thumbgen-images-sb-3299"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "124179c62265c60f",
+            "Document": {
+                "id": "124179c62265c60f",
+                "name": "S3",
+                "start_time": 1615455027.049,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455027.229,
+                "parent_id": "29a2ab83154dacbc",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "bucket_name": "thumbgen-thumbnails-sb-3299",
+                    "operation": "PutObject",
+                    "request_id": "HHSZ0RDVGXD6DBQC",
+                    "key": "resized-img.png",
+                    "id_2": "Qovjl4OHhNe/m0Dz0NLh5OMlaGP16cg0+z4pd6j2e8nOWC3dJrL3TzHLYUEJI5uiJwCOf6BDyvE=",
+                    "resource_names": [
+                        "thumbgen-thumbnails-sb-3299"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        },
+        {
+            "Id": "19f63ec7271c4b69",
+            "Document": {
+                "id": "19f63ec7271c4b69",
+                "name": "S3",
+                "start_time": 1615455025.094,
+                "trace_id": "1-6049e32a-49e6a9866fc15c8e30479d09",
+                "end_time": 1615455026.388,
+                "parent_id": "272f64610826d9a3",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200,
+                        "content_length": 71872
+                    }
+                },
+                "aws": {
+                    "bucket_name": "thumbgen-images-sb-3299",
+                    "operation": "GetObject",
+                    "request_id": "KYW26DZH61YGK38T",
+                    "key": "img.png",
+                    "id_2": "Qb/SA1QOu2Z7Mp8pmlAsOe/ye06jynIh/euf30caOQsfibqNMudWGYLMQQBKoEQn7esIBG/ImzA=",
+                    "resource_names": [
+                        "thumbgen-images-sb-3299"
+                    ]
+                },
+                "origin": "AWS::S3::Bucket"
+            }
+        }
+    ]
+}

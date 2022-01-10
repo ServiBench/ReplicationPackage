@@ -1,0 +1,312 @@
+{
+    "Id": "1-61d57a22-52c284b1f7f29e2afbac3e66",
+    "Duration": 0.122,
+    "LimitExceeded": false,
+    "Segments": [
+        {
+            "Id": "4aa09bbd2714c1c1",
+            "Document": {
+                "id": "4aa09bbd2714c1c1",
+                "name": "event-processing-dev-format_state_change",
+                "start_time": 1641380386.6528697,
+                "trace_id": "1-61d57a22-52c284b1f7f29e2afbac3e66",
+                "end_time": 1641380386.6861172,
+                "parent_id": "766022ec80057fcd",
+                "aws": {
+                    "account_id": "123456789012",
+                    "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-format_state_change",
+                    "resource_names": [
+                        "event-processing-dev-format_state_change"
+                    ]
+                },
+                "origin": "AWS::Lambda::Function",
+                "subsegments": [
+                    {
+                        "id": "8434b28c54ed67d3",
+                        "name": "Invocation",
+                        "start_time": 1641380386.5777416,
+                        "end_time": 1641380386.6018338,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-ingest"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "30613e47b2fec822",
+                                "name": "SNS",
+                                "start_time": 1641380386.578,
+                                "end_time": 1641380386.6,
+                                "http": {
+                                    "response": {
+                                        "status": 200
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "topic_arn": "arn:aws:sns:us-east-1:123456789012:format-state-change",
+                                    "region": "us-east-1",
+                                    "operation": "Publish",
+                                    "request_id": "f679f05f-cc50-5e1b-9164-aa10b032ec35",
+                                    "resource_names": [
+                                        "arn:aws:sns:us-east-1:123456789012:format-state-change"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "b74a806fb2b321d6",
+                        "name": "Overhead",
+                        "start_time": 1641380386.6018705,
+                        "end_time": 1641380386.6026149,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-ingest"
+                        }
+                    },
+                    {
+                        "id": "db36b66c5086d4d3",
+                        "name": "Invocation",
+                        "start_time": 1641380386.6529093,
+                        "end_time": 1641380386.6857278,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-format_state_change"
+                        },
+                        "subsegments": [
+                            {
+                                "id": "c942e0b0e58c7950",
+                                "name": "SQS",
+                                "start_time": 1641380386.653,
+                                "end_time": 1641380386.684,
+                                "http": {
+                                    "response": {
+                                        "status": 200
+                                    }
+                                },
+                                "aws": {
+                                    "retries": 0,
+                                    "queue_url": "https://sqs.us-east-1.amazonaws.com/123456789012/EventIngestQueue",
+                                    "message_id": "893d491a-322f-439f-85d0-fb3177d9eeff",
+                                    "region": "us-east-1",
+                                    "operation": "SendMessage",
+                                    "request_id": "d4f9e238-e1c8-513b-b4bc-b8779daa3f33",
+                                    "resource_names": [
+                                        "https://sqs.us-east-1.amazonaws.com/123456789012/EventIngestQueue"
+                                    ]
+                                },
+                                "namespace": "aws"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "9555a9576b47e35d",
+                        "name": "Overhead",
+                        "start_time": 1641380386.6857584,
+                        "end_time": 1641380386.686088,
+                        "aws": {
+                            "function_arn": "arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-format_state_change"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "45b312fcf8d12d5b",
+            "Document": {
+                "id": "45b312fcf8d12d5b",
+                "name": "event-processing-dev-format_state_change",
+                "start_time": 1641380386.606,
+                "trace_id": "1-61d57a22-52c284b1f7f29e2afbac3e66",
+                "end_time": 1641380386.614,
+                "parent_id": "318f814c2e3a0712",
+                "http": {
+                    "response": {
+                        "status": 202
+                    }
+                },
+                "aws": {
+                    "request_id": "e6ed1593-d3aa-4f49-9076-2c0c67b21b86"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-format_state_change",
+                "subsegments": [
+                    {
+                        "id": "57cd67ee21fe8f4b",
+                        "name": "Dwell Time",
+                        "start_time": 1641380386.607,
+                        "end_time": 1641380386.641
+                    },
+                    {
+                        "id": "766022ec80057fcd",
+                        "name": "Attempt #1",
+                        "start_time": 1641380386.641,
+                        "end_time": 1641380386.687,
+                        "http": {
+                            "response": {
+                                "status": 200
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "45fa6da3e55e546d",
+            "Document": {
+                "id": "45fa6da3e55e546d",
+                "name": "dev-event-processing/dev",
+                "start_time": 1641380386.565,
+                "trace_id": "1-61d57a22-52c284b1f7f29e2afbac3e66",
+                "end_time": 1641380386.603,
+                "http": {
+                    "request": {
+                        "url": "https://5s6qopwqu4.execute-api.us-east-1.amazonaws.com/dev/ingest",
+                        "method": "POST",
+                        "user_agent": "k6/0.34.1 (https://k6.io/)",
+                        "client_ip": "3.238.23.225",
+                        "x_forwarded_for": true
+                    },
+                    "response": {
+                        "status": 200,
+                        "content_length": 0
+                    }
+                },
+                "aws": {
+                    "xray": {
+                        "sampling_rule_name": "NoSampling"
+                    },
+                    "api_gateway": {
+                        "account_id": "123456789012",
+                        "rest_api_id": "5s6qopwqu4",
+                        "stage": "dev",
+                        "request_id": "d680c743-4dd1-4186-8f94-8695f9a159b1"
+                    }
+                },
+                "annotations": {
+                    "aws:api_id": "5s6qopwqu4",
+                    "aws:api_stage": "dev"
+                },
+                "metadata": {
+                    "default": {
+                        "extended_request_id": "LeAFbFpYIAMFdRg=",
+                        "request_id": "d680c743-4dd1-4186-8f94-8695f9a159b1"
+                    }
+                },
+                "origin": "AWS::ApiGateway::Stage",
+                "resource_arn": "arn:aws:apigateway:us-east-1::/restapis/5s6qopwqu4/stages/dev",
+                "subsegments": [
+                    {
+                        "id": "0c393ef6499b2429",
+                        "name": "Lambda",
+                        "start_time": 1641380386.567,
+                        "end_time": 1641380386.603,
+                        "http": {
+                            "request": {
+                                "url": "https://lambda.us-east-1.amazonaws.com/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-ingest/invocations",
+                                "method": "POST"
+                            },
+                            "response": {
+                                "status": 200,
+                                "content_length": 261
+                            }
+                        },
+                        "aws": {
+                            "function_name": "event-processing-dev-ingest",
+                            "region": "us-east-1",
+                            "operation": "Invoke",
+                            "resource_names": [
+                                "event-processing-dev-ingest"
+                            ]
+                        },
+                        "namespace": "aws"
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "419cfd4c48f7a518",
+            "Document": {
+                "id": "419cfd4c48f7a518",
+                "name": "event-processing-dev-ingest",
+                "start_time": 1641380386.572,
+                "trace_id": "1-61d57a22-52c284b1f7f29e2afbac3e66",
+                "end_time": 1641380386.602,
+                "parent_id": "0c393ef6499b2429",
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "request_id": "746bfa32-c5a1-4ce8-b5c8-1bce9cf6ba57"
+                },
+                "origin": "AWS::Lambda",
+                "resource_arn": "arn:aws:lambda:us-east-1:123456789012:function:event-processing-dev-ingest"
+            }
+        },
+        {
+            "Id": "3473be3526c3be5e",
+            "Document": {
+                "id": "3473be3526c3be5e",
+                "name": "SQS",
+                "start_time": 1641380386.653,
+                "trace_id": "1-61d57a22-52c284b1f7f29e2afbac3e66",
+                "end_time": 1641380386.684,
+                "parent_id": "c942e0b0e58c7950",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "retries": 0,
+                    "queue_url": "https://sqs.us-east-1.amazonaws.com/123456789012/EventIngestQueue",
+                    "message_id": "893d491a-322f-439f-85d0-fb3177d9eeff",
+                    "region": "us-east-1",
+                    "operation": "SendMessage",
+                    "request_id": "d4f9e238-e1c8-513b-b4bc-b8779daa3f33",
+                    "resource_names": [
+                        "https://sqs.us-east-1.amazonaws.com/123456789012/EventIngestQueue"
+                    ]
+                },
+                "origin": "AWS::SQS::Queue",
+                "subsegments": [
+                    {
+                        "id": "29cd14260e621565",
+                        "name": "QueueTime",
+                        "start_time": 1641380386.653,
+                        "end_time": 1641380386.684
+                    }
+                ]
+            }
+        },
+        {
+            "Id": "318f814c2e3a0712",
+            "Document": {
+                "id": "318f814c2e3a0712",
+                "name": "SNS",
+                "start_time": 1641380386.578,
+                "trace_id": "1-61d57a22-52c284b1f7f29e2afbac3e66",
+                "end_time": 1641380386.6,
+                "parent_id": "30613e47b2fec822",
+                "inferred": true,
+                "http": {
+                    "response": {
+                        "status": 200
+                    }
+                },
+                "aws": {
+                    "retries": 0,
+                    "topic_arn": "arn:aws:sns:us-east-1:123456789012:format-state-change",
+                    "region": "us-east-1",
+                    "operation": "Publish",
+                    "request_id": "f679f05f-cc50-5e1b-9164-aa10b032ec35",
+                    "resource_names": [
+                        "arn:aws:sns:us-east-1:123456789012:format-state-change"
+                    ]
+                },
+                "origin": "AWS::SNS"
+            }
+        }
+    ]
+}

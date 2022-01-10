@@ -37,7 +37,7 @@ ServiBench (sb) is a meta-benchmarking tool to orchestrate reproducible serverle
     python3 -m pip install --upgrade pip
     python3 -m pip install --user pipx
     python3 -m pipx ensurepath  # might require terminal restart
-    cd serverless-benchmarker
+    cd servi-bench
     pipx install --editable .
     ```
 
@@ -46,13 +46,13 @@ ServiBench (sb) is a meta-benchmarking tool to orchestrate reproducible serverle
     ```bash
     python3 -m venv sb-env
     source sb-env/bin/activate  # depends on shell
-    cd serverless-benchmarker
+    cd servi-bench
     python3 -m pip install --upgrade pip
     pip install --editable .
     ```
 
 4. Build the sb Dockerfile via `sb init`
-5. Login for providers via `sb login PROVIDER`: Supported for [aws](./serverless-benchmarker/docs/AWS.md), [azure](./serverless-benchmarker/docs/AZURE.md), `google`, `ibm`.
+5. Login for providers via `sb login PROVIDER`: Supported for [aws](./servi-bench/docs/AWS.md), [azure](./servi-bench/docs/AZURE.md), `google`, `ibm`.
 
 ### Credentials
 
@@ -103,13 +103,13 @@ sb cleanup
 * `sb shell IMAGE` starts an interactive shell with all auto-mounts in a given Docker IMAGE.
 * More examples of `*_benchmark.py` files are available under `tests/fixtures` (covered by integration tests)
 * Insert the code `import code; code.interact(local=dict(globals(), **locals()))` on any line to prompt an interactive Python shell.
-* Checkout the [DEVELOPMENT](./serverless-benchmarker/docs/DEVELOPMENT.md) docs for more details.
+* Checkout the [DEVELOPMENT](./servi-bench/docs/DEVELOPMENT.md) docs for more details.
 
 
 ### Adding a custom application
 
 1. Create a `*_benchmark.py` file in the main directory of your application.
-2. Implement hooks for `prepare(spec)`, `invoke(spec)`, and `cleanup(spec)` as shown under [mock_benchmark.py](.serverless-benchmarker/tests/fixtures/mock_benchmark/mock_benchmark.py). Key functionality:
+2. Implement hooks for `prepare(spec)`, `invoke(spec)`, and `cleanup(spec)` as shown under [mock_benchmark.py](.servi-bench/tests/fixtures/mock_benchmark/mock_benchmark.py). Key functionality:
     * `spec.run(CMD, image=DOCKERIMAGE)` Runs a given CMD in a DOCKERIMAGE and returns its stdout.
     * `spec.build(IMAGE_TAG)` Builds a Dockerfile and tags it with IMAGE_TAG.
     * `spec['KEY']` provides a persistent key-value store across different benchmark cycles (e.g., share state between prepare and invoke)
@@ -124,13 +124,13 @@ sb cleanup
     * Azure: TODO(clarify how to use [Azure Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview) metrics for [distributed tracing](https://docs.microsoft.com/en-us/azure/azure-monitor/app/distributed-tracing))
 
 ### Further documentation
-* [AWS](./serverless-benchmarker/docs/AWS.md)
-* [Azure](./serverless-benchmarker/docs/AZURE.md)
-* [Design](./serverless-benchmarker/docs/DESIGN_V1.md)
-* [Development](./serverless-benchmarker/docs/DEVELOPMENT.md)
-* [FAQ](./serverless-benchmarker/docs/FAQ.md)
-* [Load Generator](./serverless-benchmarker/docs/LOADGENERATOR.md)
-* [Output](./serverless-benchmarker/docs/OUTPUT.md)
+* [AWS](./servi-bench/docs/AWS.md)
+* [Azure](./servi-bench/docs/AZURE.md)
+* [Design](./servi-bench/docs/DESIGN_V1.md)
+* [Development](./servi-bench/docs/DEVELOPMENT.md)
+* [FAQ](./servi-bench/docs/FAQ.md)
+* [Load Generator](./servi-bench/docs/LOADGENERATOR.md)
+* [Output](./servi-bench/docs/OUTPUT.md)
 
 ## Analysis of the Azure Workload Traces
 We visually identify 4 typical invocation patterns from the azure functions dataset by manually classifying two time ranges for 100 of the 528 functions remaining after the initial filtering. We first created 200 individual line plots with invocation counts over 20 minutes and grouped similar traffic shapes into several clusters. After merging similar patterns, we identified the following 4 common patterns:

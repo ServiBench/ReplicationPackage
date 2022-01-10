@@ -1,0 +1,27 @@
+{
+    "Id": "1-608c1bd4-8ceba73b6799988cd7aaee1a",
+    "Duration": 0.035,
+    "LimitExceeded": false,
+    "Segments": [
+        {
+            "Id": "209fc228b26e3f95",
+            "Document": "{\"id\":\"209fc228b26e3f95\",\"name\":\"dev-realworld/dev\",\"start_time\":1.61979490085E9,\"trace_id\":\"1-608c1bd4-8ceba73b6799988cd7aaee1a\",\"end_time\":1.619794900885E9,\"http\":{\"request\":{\"url\":\"https://538uury0ga.execute-api.eu-west-1.amazonaws.com/dev/api/articles/8c90798198-vvwthh/comments\",\"method\":\"GET\",\"user_agent\":\"k6/0.31.1 (https://k6.io/)\",\"client_ip\":\"54.74.113.241\",\"x_forwarded_for\":true},\"response\":{\"status\":200,\"content_length\":0}},\"aws\":{\"xray\":{\"sampling_rule_name\":\"NoSampling\"},\"api_gateway\":{\"account_id\":\"123456789012\",\"rest_api_id\":\"538uury0ga\",\"stage\":\"dev\",\"request_id\":\"06fc937e-ff32-4402-bd39-8efb49a0afea\"}},\"annotations\":{\"aws:api_id\":\"538uury0ga\",\"aws:api_stage\":\"dev\"},\"metadata\":{\"default\":{\"extended_request_id\":\"emlJREpKjoEFWdg=\",\"request_id\":\"06fc937e-ff32-4402-bd39-8efb49a0afea\"}},\"origin\":\"AWS::ApiGateway::Stage\",\"resource_arn\":\"arn:aws:apigateway:eu-west-1::/restapis/538uury0ga/stages/dev\",\"subsegments\":[{\"id\":\"352249885a04879e\",\"name\":\"Lambda\",\"start_time\":1.619794900852E9,\"end_time\":1.619794900885E9,\"http\":{\"request\":{\"url\":\"https://lambda.eu-west-1.amazonaws.com/2015-03-31/functions/arn:aws:lambda:eu-west-1:123456789012:function:realworld-dev-getComments/invocations\",\"method\":\"GET\"},\"response\":{\"status\":200,\"content_length\":20}},\"aws\":{\"function_name\":\"realworld-dev-getComments\",\"region\":\"eu-west-1\",\"operation\":\"Invoke\",\"resource_names\":[\"realworld-dev-getComments\"]},\"namespace\":\"aws\"}]}"
+        },
+        {
+            "Id": "2702b155619594be",
+            "Document": "{\"id\":\"2702b155619594be\",\"name\":\"realworld-dev-getComments\",\"start_time\":1.619794900856E9,\"trace_id\":\"1-608c1bd4-8ceba73b6799988cd7aaee1a\",\"end_time\":1.619794900885E9,\"parent_id\":\"352249885a04879e\",\"http\":{\"response\":{\"status\":200}},\"aws\":{\"request_id\":\"7200b159-200c-42e5-87d1-fce3b67c5143\"},\"origin\":\"AWS::Lambda\",\"resource_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:realworld-dev-getComments\"}"
+        },
+        {
+            "Id": "2aeb492d4d85131d",
+            "Document": "{\"id\":\"2aeb492d4d85131d\",\"name\":\"realworld-dev-getComments\",\"start_time\":1.619794900862232E9,\"trace_id\":\"1-608c1bd4-8ceba73b6799988cd7aaee1a\",\"end_time\":1.6197949008851886E9,\"parent_id\":\"2702b155619594be\",\"aws\":{\"account_id\":\"123456789012\",\"function_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:realworld-dev-getComments\",\"resource_names\":[\"realworld-dev-getComments\"]},\"origin\":\"AWS::Lambda::Function\",\"subsegments\":[{\"id\":\"23514c48ef7cc3bb\",\"name\":\"Invocation\",\"start_time\":1.6197949008622751E9,\"end_time\":1.6197949008848226E9,\"aws\":{\"function_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:realworld-dev-getComments\"},\"subsegments\":[{\"id\":\"0bcf4f131718f76c\",\"name\":\"DynamoDB\",\"start_time\":1.619794900871E9,\"end_time\":1.619794900883E9,\"http\":{\"response\":{\"status\":200}},\"aws\":{\"retries\":0,\"region\":\"eu-west-1\",\"operation\":\"Query\",\"request_id\":\"Q15TAREHDG4DEOPEEIC77PQ3SNVV4KQNSO5AEMVJF66Q9ASUAAJG\",\"index_name\":\"article\",\"table_name\":\"realworld-dev-comments\",\"resource_names\":[\"realworld-dev-comments\"]},\"namespace\":\"aws\"},{\"id\":\"d7be852baa47ea77\",\"name\":\"DynamoDB\",\"start_time\":1.619794900863E9,\"end_time\":1.61979490087E9,\"http\":{\"response\":{\"status\":200}},\"aws\":{\"retries\":0,\"region\":\"eu-west-1\",\"operation\":\"GetItem\",\"request_id\":\"RJ7SOJ7067JTG8U8C3S49F79LBVV4KQNSO5AEMVJF66Q9ASUAAJG\",\"table_name\":\"realworld-dev-users\",\"resource_names\":[\"realworld-dev-users\"]},\"namespace\":\"aws\"}]},{\"id\":\"4a55c28117b12efd\",\"name\":\"Overhead\",\"start_time\":1.619794900884848E9,\"end_time\":1.6197949008851602E9,\"aws\":{\"function_arn\":\"arn:aws:lambda:eu-west-1:123456789012:function:realworld-dev-getComments\"}}]}"
+        },
+        {
+            "Id": "17603c9728bdf4b5",
+            "Document": "{\"id\":\"17603c9728bdf4b5\",\"name\":\"DynamoDB\",\"start_time\":1.619794900863E9,\"trace_id\":\"1-608c1bd4-8ceba73b6799988cd7aaee1a\",\"end_time\":1.61979490087E9,\"parent_id\":\"d7be852baa47ea77\",\"inferred\":true,\"http\":{\"response\":{\"status\":200}},\"aws\":{\"retries\":0,\"region\":\"eu-west-1\",\"operation\":\"GetItem\",\"request_id\":\"RJ7SOJ7067JTG8U8C3S49F79LBVV4KQNSO5AEMVJF66Q9ASUAAJG\",\"table_name\":\"realworld-dev-users\",\"resource_names\":[\"realworld-dev-users\"]},\"origin\":\"AWS::DynamoDB::Table\"}"
+        },
+        {
+            "Id": "2edcd09e13398f81",
+            "Document": "{\"id\":\"2edcd09e13398f81\",\"name\":\"DynamoDB\",\"start_time\":1.619794900871E9,\"trace_id\":\"1-608c1bd4-8ceba73b6799988cd7aaee1a\",\"end_time\":1.619794900883E9,\"parent_id\":\"0bcf4f131718f76c\",\"inferred\":true,\"http\":{\"response\":{\"status\":200}},\"aws\":{\"retries\":0,\"region\":\"eu-west-1\",\"operation\":\"Query\",\"request_id\":\"Q15TAREHDG4DEOPEEIC77PQ3SNVV4KQNSO5AEMVJF66Q9ASUAAJG\",\"index_name\":\"article\",\"table_name\":\"realworld-dev-comments\",\"resource_names\":[\"realworld-dev-comments\"]},\"origin\":\"AWS::DynamoDB::Table\"}"
+        }
+    ]
+}

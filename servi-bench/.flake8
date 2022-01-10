@@ -1,0 +1,4 @@
+[flake8]
+ignore = E305
+exclude = .git,__pycache__,.pytest_cache,benchmarks_old,node_modules,lib,lib64
+max-line-length = 100

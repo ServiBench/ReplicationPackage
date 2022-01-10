@@ -1,0 +1,10 @@
+# potential secrets
+.env
+
+# ignore .git and .cache folders
+.git
+.cache
+__pycache__
+
+# large Node dependencies
+node_modules
