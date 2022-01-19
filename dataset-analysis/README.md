@@ -1,70 +1,77 @@
-# Experiment Data Analysis
+# SB Traces Dataset
 
-## Quick Setup
+This repository contains scripts and instructions to reproduce:
+
+* a) the data analysis based on our published dataset
+* b) the cloud experiments in a serverless cloud environment using sb.
+* c) the invocation pattern analysis based on the Azure Function Traces dataset (see [azurefunctions-dataset2019-analysis](https://github.com/perfkit/azurefunctions-dataset2019-analysis))
+
+## Data Analysis
+
+We first use the sb trace analyzer to pre-process the raw traces before generating plots.
+
+### Preparation
+
+1. Activate virtual environment with sb
+
+    ```sh
+    source sb-env/bin/activate  # depends on shell
+    ```
+
+2. Pre-process traces through sb analyzer
+
+    ```sh
+    make analyze_traces
+    ```
+
+### Generate Plots
 
 1. Install Python 3.7+
-2. Install the Python dependencies (preferably in a virtual environment)
+2. Create virtual environment
+
+    ```sh
+    python3 -m venv sb-dataset-analysis
+    ```
+
+3. Install the Python dependencies
 
     ```sh
     pip install --upgrade pip
     pip install -r requirements.txt
     ```
 
-3. Adjust the data source path in `sb_importer.py` (data_path and lg_name)
-4. Run analysis
+4. Generate plots
 
     a) Plain Python
 
       ```sh
-      python coldstart_behavior.py
-      python workload_types.py
-      python load_levels.py
-      python execution.py
+      make generate_plots
+      make generate_plots_all
       ```
 
     b) VSCode Interactive: Run individual cells with the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) in [interactive mode](https://youtu.be/lwN4-W1WR84?t=107)
 
-## Experiments
+> The data source can be configured via `SB_DATA_SOURCE` (default `lg12`) or directly through `SB_DATA_DIR` (default `data/lg12/raw`).
 
-## Prestudy April 2021
+## Cloud Experiments
 
-* lg2: us-east-1f, t3.xlarge (400gb, gp3)
-  * 61.84G (72G disk)
-  * contains 26 unlabeled executions not directly assigned to an experiment (mostly used for testing and kept for reference)
-* lg3: eu-west-1, t3.xlarge (300gb, gp3)
-  * 8.92G (23G disk)
-  * video processing only one execution for steady workload
-* lg4: us-west-2, t3.xlarge (300gb, gp3)
-  * 40.97G (53G disk)
-  * event processing logs missing
-* lg5: eu-central-1, t3.xlarge (300gb, gp3) => stuff failed for some reasons, aborted!
-* lg6: us-east-2c, t3.xlarge (300gb, gp3)
-  * 6.76G (13G disk)
+We describe how to reproduce our experiments in the AWS cloud environment to collect a new dataset following the same experiment design.
 
-### Done
+> Carefully review the experiment configuration and be aware that experiments with high-load levels can cost 1000s of USD in cloud bills!
 
-* exp21: 2021-04-28 +1 with fully constant 20rps over 20min, 3 trials
-* exp41: 2021-04-29 ramping VUs 1, 10, 20, 50, 100, 1 trial
-* exp42: 2021-04-30 +1 fine-grained stepwise from 1 to 200 [1, 10, 20, 50, 100, 150, 200], 1 trial
-* exp43: 2021-04-30 ramping rps with thumbnail (40img) only [1, 10, 20, 50, 100, 150, 200, 500, 750, 1000]
-* exp22: 2021-04-29 +1 fine-grained stepwise from 1 to 200 [1, 10, 20, 50, 100, 150, 200], 3 trials
-  * hello retails appears missing
-* exp44: 2021-04-30 ramping rps with event processing (or thumbnail?!) only [1, 10, 20, 50, 100, 150, 200, 500, 750, 1000]
-  * no data available
-* exp61: 2021-04-30 1h scenarios with event processing app and same avg request rate (72rps, avg = ~4363 from bursty_1h): constant_1h.csv, bursty_1h.csv
-* exp31: 2021-04-29 +1 high rps patterns (20rps), 4 patterns * 9 apps, 1 trial each
-  * There appears to be some systematic issue where traces of the first 5' are not available? => or debug analysis script!
-  * Video processing app seems to have only 1 execution for constant trace workload
-* lg3_clean: anonymized traces of exp31 by replacing account id with 123456789012
+### Preparation
 
-* lg7: 2021-08-27 load level tests with thumbnail_generator
-* lg10: 2021-11-18 ran exp81_xray_sampling with increasing load to explore possible xray sampling configurations
-* lg11: 2021-12-07 - 2021-12-10 ran exp1_latency_breakdown v1-v4 to find a suitable strategy for generating cold invocation samples under the given xray limitations
-* lg12: data for exp1_latency_breakdown results in paper using bursts of 20 VUs, round robin invocations, and period re-deployment
+1. Create an AWS account for sb following [these instructions](https://github.com/perfkit/serverless-benchmarker/blob/master/docs/AWS.md)
+2. Create an [X-Ray sampling rule](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html) called `NoSampling` with highest priority (`1`) and 100% fixed sampling rate.
 
-### Running/Scheduled
+### Run Experiments
 
-### Preparing
+1. Set up a load generator in AWS EC2 following [these instructions](https://github.com/perfkit/serverless-benchmarker/blob/master/docs/LOADGENERATOR.md). Use the alias `lg12` in the SSH config or adjust set the environment variable `SB_DATA_SOURCE` for the following steps.
+2. Copy the [experiment_plans](./experiment_plans) into the load generator
 
+    ```sh
+    scp experiment_plans/exp* ec2-user@lg12:/home/ec2-user
+    ```
 
-## Troubleshooting
+3. Run the experiment as described in each experiment plan using `tmux` because ordinary SSH sessions might disconnect during long running experiments. The experiment plans automate the benchmarking lifecycle including application deployment, trace collection, and application cleanup.
+4. Download the collected traces using `make retrieve_logs`

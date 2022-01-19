@@ -2,6 +2,9 @@ library(data.table)
 library(dplyr)
 library(purrr)
 
+# This script imports the 14 chunks of the original dataset and merges them
+# into a single variable called `all`.
+
 # Load Configuration ---------------------------
 dataPath <- '../data'
 filePattern <- 'invocations_per_function_md.anon.d[0-9][0-9].csv'

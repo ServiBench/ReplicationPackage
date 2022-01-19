@@ -16,7 +16,7 @@ Changelog:
 
 # Usage:
 # 1) Open tmux
-# 2) Activate virtualenv
+# 2) Activate virtualenv: source sb-env/bin/activate
 # 3) Run ./exp1_latency_breakdown_v4.py 2>&1 | tee -a exp1_latency_breakdown_v4.log
 
 import logging

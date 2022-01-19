@@ -6,7 +6,7 @@ Runs an experiment for all 10 sb apps with a given constant load (i.e., load_lev
 
 # Usage:
 # 1) Open tmux
-# 2) Activate virtualenv
+# 2) Activate virtualenv: source sb-env/bin/activate
 # 3) Run ./exp2_load_levels.py 2>&1 | tee -a exp2_load_levels.log
 
 import logging

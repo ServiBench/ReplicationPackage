@@ -1,3 +1,6 @@
+# Very large data directory (>60GB)
+data
+
 # custom venv settings of vscode
 .vscode/settings.json
 

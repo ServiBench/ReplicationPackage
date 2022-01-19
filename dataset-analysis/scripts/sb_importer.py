@@ -1,12 +1,13 @@
-"""Provides a library of importing and pre-processing utilities to analyze datasets from sb experiments.
+"""Provides a library for reading, pre-processing, and analyzing datasets from sb experiments.
 Usage: from sb_importer import *
-Configuration:
-* data_path: path to the location of the dataset
-* lg_name: directory of the the dataset (used to distinguish data from multiple sources)
+Configuration through environment variables:
+# * SB_DATA_SOURCE: a prefix to distinguish data from different load generators (default lg12)
+# * SB_DATA_DIR: optionally override the data path directly (default data/lg12/raw)
 """
 
 # %% Imports
 from pathlib import Path, PurePath
+import os
 from dateutil.parser import parse
 from datetime import timedelta
 import yaml
@@ -28,13 +29,25 @@ from plotnine import *
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 # %% Configure data source
-data_path = Path.home() / 'Datasets/serverless-study/data'
-lg_name = 'lg12'
-plots_root_path = data_path.parent / 'plots' / lg_name
-workload_rates_dir = data_path / 'workload_traces'
-apps_path = data_path / lg_name / 'ec2-user'
+# Directory structure example:
+# ~/sb-dataset-analysis/data/lg12/raw/hello-retail/logs/2021-12-15_10-31-38
+# * data_source=lg12
+# * root_dir  =~/sb-dataset-analysis
+# * apps_path =~/sb-dataset-analysis/data/lg12/raw
+# * plots_dir =~/sb-dataset-analysis/data/lg12/plots
+# * plots_dir =~/sb-dataset-analysis/data/lg12/cache
+# * workload_rates_dir=~/sb-dataset-analysis/data/workload_traces
+data_source = os.environ.get('SB_DATA_SOURCE', None) or 'lg12'
+# Root directory of sb-dataset-analysis
+root_dir = Path(__file__).parent.parent.resolve()
+default_data_path = root_dir / 'data' / data_source / 'raw'
+apps_path = os.environ.get('SB_DATA_DIR', None) or default_data_path
+plots_dir = apps_path.parent / 'plots'
+cache_dir = apps_path.parent / 'cache'
+workload_rates_dir = root_dir / 'data/workload_traces'
 # Mapping of app shortname to path in alphabetical order
 apps = {
+    'apigw_node': 'serverless-patterns/apigw-lambda-cdk/src/apigw_node_benchmark.py',
     'event_processing': 'faas-migration/Event-Processing/Lambda/event_processing_benchmark.py',
     'hello_retail': 'hello-retail/hello_retail_benchmark.py',
     'image_processing': 'aws-serverless-workshops/ImageProcessing/image_processing_benchmark.py',
@@ -44,9 +57,8 @@ apps = {
     'thumbnail_generator': 'faas-migration/ThumbnailGenerator/Lambda/thumbnail_benchmark.py',
     'todo_api': 'faas-migration-go/aws/todo_api_benchmark.py',
     'video_processing': 'serverless-faas-workbench/aws/cpu-memory/video_processing/video_processing_benchmark.py',
-    'apigw_node': 'serverless-patterns/apigw-lambda-cdk/src/apigw_node_benchmark.py'
 }
-# Manual order of apps based on dominate time category
+# Manual order of apps based on main activity
 app_order = [
     # blank
     'apigw_node',
@@ -79,9 +91,11 @@ categories = [
 # %% Apps iteration helper
 
 def plots_path(app_name=None) -> Path:
-    plots_path = plots_root_path
+    """Returns a path to the plots directory for a given application name.
+    Depends on plots_dir."""
+    plots_path = plots_dir
     if app_name:
-        plots_path = plots_root_path / app_name
+        plots_path = plots_dir / app_name
     plots_path.mkdir(exist_ok=True, parents=True)
     return plots_path
 
@@ -101,9 +115,12 @@ def find_execution_paths(apps_path, app_source):
 
 def get_workload_label(app_config) -> str:
     """Returns a human-readable label of the kind of workload used."""
+    workload_label = app_config.get('workload_label', None)
     workload_type = app_config.get('workload_type', None)
     workload_trace = app_config.get('workload_trace', None)
-    if workload_type and workload_type != 'custom':
+    if workload_label:
+        return workload_label
+    elif workload_type and workload_type != 'custom':
         return workload_type
     elif workload_trace:
         return PurePath(workload_trace).name
@@ -289,8 +306,12 @@ def read_workload_rates(app_config) -> pd.DataFrame or None:
 
     workload_rates_sec = parse_workload_rates_ips(workload_rates_path)
     ips_col = 'workload_rates_ips'
-    workload_rates_sec = remove_starting_zero_ips(workload_rates_sec, ips_col)
-    return workload_rates_sec
+    # Remove first seconds_to_skip rows
+    seconds_to_skip = app_config.get('seconds_to_skip', 0)
+    # Setting the time to skip to 0 will automatically remove them and adjust the relative time through remove_starting_zero_ips
+    workload_rates_sec.iloc[:seconds_to_skip]['workload_rates_ips'] = 0.0
+    workload_rates_sec_adjusted = remove_starting_zero_ips(workload_rates_sec, ips_col)
+    return workload_rates_sec_adjusted
 
 def parse_workload_rates_ips(workload_rates_path, ips_col = 'workload_rates_ips') -> pd.DataFrame:
     workload_rates_min = pd.read_csv(workload_rates_path)
@@ -331,24 +352,41 @@ def get_distance(df, variable_x, variable_y):
     if len(x) == 0 or len(y) == 0:
         return None
     distance, _ = fastdtw(x, y, dist=euclidean)
-    return distance
+    return round(distance, 0)
 
 def get_logs_path(execution) -> Path:
-    # TODO: parametrize hard-coded apps_path
-    # Alternative implementation based on app_path would be more flexible:
-    # app_path = faas-migration/ThumbnailGenerator/Lambda/thumbnail_generator.py
-    # execution = /Users/anonymous/Documents/Datasets/serverless-study/data/lg7/ec2-user/faas-migration/ThumbnailGenerator/Lambda/logs/2021-08-30_09-34-20
-    # => faas-migration/ThumbnailGenerator/Lambda/logs/2021-08-30_09-34-20
-    # execution =  /Users/anonymous/Documents/Datasets/serverless-study/data/lg7/ec2-user/faas-migration/ThumbnailGenerator/logs/2021-08-30_09-34-20
-    # => faas-migration/ThumbnailGenerator/logs/2021-08-30_09-34-20
+    """Returns a relative path to a logs directory for a given execution.
+    Depends on `apps_path` defined in sb_importer.py.
+    Examples:
+    Given: app_path = faas-migration/ThumbnailGenerator/Lambda/thumbnail_generator.py
+    execution = /Users/joe/Documents/Datasets/serverless-study/data/lg7/ec2-user/faas-migration/ThumbnailGenerator/Lambda/logs/2021-08-30_09-34-20
+    => faas-migration/ThumbnailGenerator/Lambda/logs/2021-08-30_09-34-20
+    execution =  /Users/joe/Documents/Datasets/serverless-study/data/lg7/ec2-user/faas-migration/ThumbnailGenerator/logs/2021-08-30_09-34-20
+    => faas-migration/ThumbnailGenerator/logs/2021-08-30_09-34-20
+    """
     try:
-        # NOTE: apps_path is defined in sb_importer.py and dependent on lg_name
         return execution.relative_to(apps_path)
     except ValueError:
         logging.warning(f"Could not find relative path. Check apps_path={apps_path}.")
         return ''
 
+def get_issue_list(summary, threshold = 0.05) -> str:
+    """Returns a list of potential issues checking against a deviation threshold"""
+    issues = []
+    if summary['invalid_rate'] >= threshold:
+        issues.append('invalid_rate')
+    if summary['missing_rate'] >= threshold or summary['missing_rate'] <= -threshold:
+        issues.append('missing_rate')
+    if summary['error_rate'] >= threshold:
+        issues.append('error_rate')
+    if summary['valid_success_rate'] <= 1-threshold:
+        issues.append('valid_success_rate')
+    if summary['actual_target_ratio'] <= 1-threshold or summary['actual_target_ratio'] >= 1+threshold:
+        issues.append('actual_target_ratio')
+    return ','.join(issues)
+
 def generate_summary(execution, app_config, app_name, workload_rates, workload_options, k6_invocations, trace_breakdown, invalid_traces) -> pd.DataFrame:
+    """Returns a data frame with key overview statistics for each execution."""
     summary = {}
     # Experiment and app
     summary['label'] = app_config.get('label', '')
@@ -386,6 +424,8 @@ def generate_summary(execution, app_config, app_name, workload_rates, workload_o
     summary['error_traces'] = summary['valid_traces'] - summary['success_traces']
     error_rate = 100 if summary['valid_traces'] == 0 else round(summary['error_traces'] / summary['valid_traces'], 2)
     summary['error_rate'] = error_rate
+    # Rate of valid requests that were served successfully compared to sent requests
+    summary['valid_success_rate'] = 0 if summary['sent_requests'] == 0 else round(summary['success_traces'] / summary['sent_requests'], 2)
     # Compute relevant summary stats
     summary['trace_duration_p50_ms'] = 0 if trace_breakdown['duration'].empty else round(trace_breakdown['duration'].median().total_seconds() * 1000, 3)
     summary['trace_duration_mean_ms'] = 0 if trace_breakdown['duration'].empty else round(trace_breakdown['duration'].mean().total_seconds() * 1000, 3)
@@ -397,8 +437,9 @@ def generate_summary(execution, app_config, app_name, workload_rates, workload_o
     relative_time_max = [d['relative_time'].max() for d in data_frames if d is not None]
     summary['relative_time_duration_seconds'] = round(max(relative_time_max), 2)
     # Compute effective invocation rate
-    summary['target_invocations_per_second'] = app_config.get('load_level', '')
+    summary['target_invocations_per_second'] = app_config.get('load_level', 0)
     summary['actual_invocations_per_second'] = 0 if summary['relative_time_duration_seconds'] == 0 else round(summary['sent_requests'] / summary['relative_time_duration_seconds'], 2)
+    summary['actual_target_ratio'] = 0 if summary['target_invocations_per_second'] == 0 else round(summary['actual_invocations_per_second'] / summary['target_invocations_per_second'], 2)
     # Estimate concurrency
     summary['http_concurrency'] = round(summary['actual_invocations_per_second'] * summary['http_req_duration_mean_ms'] / 1000, 2)
     summary['trace_concurrency'] = round(summary['actual_invocations_per_second'] * summary['trace_duration_mean_ms'] / 1000, 2)
@@ -412,6 +453,8 @@ def generate_summary(execution, app_config, app_name, workload_rates, workload_o
         summary['rates_to_options_dtw'] = get_distance(df_long, 'workload_rates_ips', 'workload_options_ips')
         summary['options_to_k6_dtw'] = get_distance(df_long, 'workload_options_ips', 'k6_invocations_ips')
         summary['k6_to_traces_dtw'] = get_distance(df_long, 'k6_invocations_ips', 'trace_breakdown_ips')
+    # Create an issues summary column that highlights potential issues
+    summary['issues'] = get_issue_list(summary)
     summary_df = pd.DataFrame(summary, index=[0])
     return summary_df
 
@@ -505,7 +548,7 @@ def merge_by_relative_time(data_frames, value_vars=None) -> pd.DataFrame:
     # Compare length of data frames
     data_frame_lengths = [len(d) for d in filtered_data_frames]
     # Allow a few seconds difference before logging warning
-    max_diff_margin = 5
+    max_diff_margin = 10
     if max_diff(data_frame_lengths) > max_diff_margin:
         logging.warning(
             f"The length of relative_time from the different sources differs: {data_frame_lengths}. "
@@ -573,6 +616,10 @@ def fuzzy_match(actual_path, path_pattern) -> bool:
         if not fnmatch.fnmatch(name, pattern):
             return False
     return True
+
+def app_request_type_label(app, request_type) -> str:
+    """Format a label based on the application name and request type."""
+    return f"{app}\n({request_type})"
 
 def request_type(app, url, method, longest_path_names):
     """Mapping method with heuristics to identify different request types for common sb apps.

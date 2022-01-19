@@ -8,7 +8,7 @@ Runs an experiment with two extreme load types with the same average invocation 
 
 # Usage:
 # 1) Open tmux
-# 2) Activate virtualenv
+# 2) Activate virtualenv: source sb-env/bin/activate
 # 3) Run ./exp3_workload_types_artificial.py 2>&1 | tee -a exp3_workload_types_artificial.log
 
 import logging
@@ -35,7 +35,7 @@ for app, load_level in apps_load_level_mapping.items():
     sb_cli = Sb(app_path, log_level='DEBUG', debug=True)
     sb_clis.append((sb_cli, load_level))
 
-seconds_per_target = 5*60
+seconds_per_target = 20*60
 
 def on_off_options(load_level):
     """Returns k6 workload options for an on_off workload
@@ -158,8 +158,31 @@ def run_test(sb, load_level):
     options = constant_options(load_level)
     workload_label = 'constant'
     ## Derive label
-    exp_label = f"exp3_workload_types_{workload_label}"
+    exp_label = f"exp3_workload_types_20min_{workload_label}"
     try:
+        sb.prepare()
+        sb.config.set('label', exp_label)
+        sb.config.set('load_level', load_level)
+        sb.config.set('workload_label', workload_label)
+        sb.wait(30)
+        sb.invoke('custom', workload_options=options)
+        sb.wait(5*60)
+        sb.get_traces()
+    except:
+        logging.error('Error during execution of benchmark. Cleaning up ...')
+    finally:
+        sb.cleanup()
+
+    ## On_off workload choice
+    options = on_off_options(load_level)
+    workload_label = 'on_off'
+    ## Constant workload choice
+    # options = constant_options(load_level)
+    # workload_label = 'constant'
+    ## Derive label
+    exp_label = f"exp3_workload_types_20min_{workload_label}"
+    try:
+        sb.wait(60)
         sb.prepare()
         sb.config.set('label', exp_label)
         sb.config.set('load_level', load_level)

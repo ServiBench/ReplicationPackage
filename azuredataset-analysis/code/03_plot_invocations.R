@@ -1,5 +1,11 @@
 library(tidyverse)
-library(TSA) # for periodogram
+
+# This script filters relevant traces and generates line plots with
+# invocation rates over time for two different time periods.
+
+# Configure Output Directory -----------------------
+baseDir <- "../results/invocations/20min_min1rps"
+dir.create(baseDir, recursive = TRUE, showWarnings = FALSE)
 
 # Filter Traces for Relevant Classes ---------------------------
 filtered <- all %>%
@@ -40,8 +46,6 @@ sampled <- filtered %>%
   sample_n(numSamples)
 
 # Plot Traces ---------------------------
-baseDir <- "../results/invocations/20min/very_high"
-dir.create(baseDir, showWarnings = FALSE)
 
 plot_trace <- function(data, baseDir, variant) {
   file <- paste(baseDir, "/invocations", variant, "-count.pdf", sep = "")
@@ -50,7 +54,6 @@ plot_trace <- function(data, baseDir, variant) {
     expand_limits(y = 0) +
     ggtitle(variant)
   ggsave(file, width = 15, height = 7, device = cairo_pdf(), plot = p)
-  dev.off()
 }
 
 for (i in 1:numSamples) {
