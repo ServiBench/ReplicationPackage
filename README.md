@@ -420,6 +420,12 @@ The ```dataset-analysis``` contains scripts and instructions to reproduce:
 * b) the cloud experiments in a serverless cloud environment using sb.
 * c) the invocation pattern analysis based on the Azure Function Traces dataset (see [Analysis of the Azure Workload Traces](#Analysis-of-the-Azure-Workload-Traces))
 
+### Download the dataset
+
+The full dataset (~6GB compressed, ~70GB uncompressed) collected during our experiments in available on Zenodo:
+
+```https://doi.org/10.5281/zenodo.5879445```
+
 ### Preparation
 
 We first use the sb trace analyzer to pre-process the raw traces before generating plots.
